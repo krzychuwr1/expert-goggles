@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace LibraryPrototype
 {
-    public class Main
+    public class LibraryMain
     {
         private static readonly IKernel kernel = new StandardKernel();
         
@@ -18,7 +18,7 @@ namespace LibraryPrototype
 
         public static IResolutionRoot Kernel { get => kernel as IResolutionRoot; }
 
-        public Main()
+        public LibraryMain()
         {
             kernel.ConfigureBindings();
             googleDriveReader = Kernel.Get<IGoogleDriveReader>();   
