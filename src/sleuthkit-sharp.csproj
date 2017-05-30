@@ -105,19 +105,10 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
-  <ItemGroup Condition="'$(Platform)' == 'x64'">
-    <Reference Include="ewf.net, Version=1.0.5156.25405, Culture=neutral, PublicKeyToken=c0e8495fa322da2d, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Lib\x64\ewf.net.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup Condition="'$(Platform)' != 'x64'">
-    <Reference Include="ewf.net, Version=1.0.5156.25405, Culture=neutral, PublicKeyToken=c0e8495fa322da2d, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Lib\x86\ewf.net.dll</HintPath>
-    </Reference>
-  </ItemGroup>
   <ItemGroup>
+    <Reference Include="ewf.net">
+      <HintPath>..\..\..\Downloads\expert-goggles-master\Tester\ewf.net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
     </Reference>

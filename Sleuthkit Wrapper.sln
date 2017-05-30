@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.6
+VisualStudioVersion = 15.0.26430.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sleuthkit-sharp", "src\sleuthkit-sharp.csproj", "{828A2D64-EFAD-496C-A369-7C8658AE4FFA}"
 EndProject
@@ -59,6 +59,7 @@ Global
 		{B9D1BF37-6984-40F9-8480-0E8F982D32E9}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
 		{B9D1BF37-6984-40F9-8480-0E8F982D32E9}.Debug|x64.ActiveCfg = Debug|Any CPU
 		{B9D1BF37-6984-40F9-8480-0E8F982D32E9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B9D1BF37-6984-40F9-8480-0E8F982D32E9}.Debug|x86.Build.0 = Debug|Any CPU
 		{B9D1BF37-6984-40F9-8480-0E8F982D32E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9D1BF37-6984-40F9-8480-0E8F982D32E9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B9D1BF37-6984-40F9-8480-0E8F982D32E9}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU

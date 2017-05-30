@@ -80,6 +80,7 @@ namespace Tester
             IntPtr dataPtr)
         {
             FilePaths.Add(string.Format("{0}{1}", directoryPath, file.Name));
+            Console.WriteLine(string.Format("{0}{1}", directoryPath, file.Name));
             return WalkReturnEnum.Continue;
         }
 
