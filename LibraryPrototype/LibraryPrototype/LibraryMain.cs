@@ -29,6 +29,8 @@ namespace LibraryPrototype
         public string GetGoogleDriveDataSummary() => googleDriveReader.GetCrucialDataSummary();
 
         public IEnumerable<string> GetGoogleDriveFiles() => googleDriveReader.Filenames;
+
+        public IEnumerable<string> SleuthkitTest() => googleDriveReader.SleuthKitTest();
          
     }
 }

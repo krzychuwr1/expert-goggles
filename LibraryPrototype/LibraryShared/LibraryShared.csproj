@@ -42,8 +42,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FileProvider.cs" />
+    <Compile Include="FileProviderDisk.cs" />
     <Compile Include="IFileProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\sleuthkit-sharp\sleuthkit-sharp.csproj">
+      <Project>{828a2d64-efad-496c-a369-7c8658ae4ffa}</Project>
+      <Name>sleuthkit-sharp</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
