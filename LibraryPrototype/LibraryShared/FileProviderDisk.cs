@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SleuthKit;
 using SleuthKit.Structs;
+using System.IO;
 
 namespace LibraryShared
 {
@@ -65,6 +66,37 @@ namespace LibraryShared
             }
 
             return users;
+        }
+
+        public Stream GetFileStream(string path)
+        {
+            using (FileSystem fileSystem = diskImage.OpenFileSystem())
+            {
+                var file = fileSystem.OpenFile(path);
+                if (file == null)
+                {
+                    throw new FileNotFoundException();
+                }
+                return file.OpenRead();
+            }
+        }
+
+        public byte[] GetFileBytes(string path)
+        {
+            using (FileSystem fileSystem = diskImage.OpenFileSystem())
+            {
+                var file = fileSystem.OpenFile(path);
+                if (file == null)
+                {
+                    throw new FileNotFoundException();
+                }
+
+                var buffer = new byte[file.Size];
+
+                file.ReadBytes(0, buffer, (int)file.Size);
+
+                return buffer;
+            }
         }
     }
 }

@@ -41,8 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\FileNotFoundException.cs" />
     <Compile Include="FileProvider.cs" />
     <Compile Include="FileProviderDisk.cs" />
+    <Compile Include="FileUtils.cs" />
     <Compile Include="IFileProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

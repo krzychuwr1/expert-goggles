@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Data.SQLite;
 using Microsoft.Win32;
 using GoogleDrive.Exceptions;
+using System.IO;
 
 namespace GoogleDrive
 {
@@ -63,12 +64,16 @@ namespace GoogleDrive
 
         public void SleuthKitTest()
         {
-            var disk = fileProvider.OpenDisk(@"D:\Obrazy\obraz1.dd");
+            var disk = fileProvider.OpenDisk(@"C:\Users\kwrona\Documents\inzynierka\obraz1.dd");
 
-            foreach(var userName in disk.GetAllUsers())
-            {
-                Console.WriteLine(userName);
-            }
+            var userName = disk.GetAllUsers().Single();
+
+            var stream = new MemoryStream(disk.GetFileBytes($@"Users/{userName}/AppData/Local/Google/Drive/user_default/snapshot.db"));
+
+            var path = stream.SaveAsFile();
+
+            GetSnapshotData(path);
+            
         }
 
         private void GetSyncConfigData(string drivePath)
@@ -97,11 +102,10 @@ namespace GoogleDrive
             AllData = builder.ToString();
         }
 
-        private void GetSnapshotData(string drivePath)
+        private void GetSnapshotData(string snapshotPath)
         {
-            var sync_configdbPath = $@"{drivePath}user_default\snapshot.db";
 
-            SQLiteConnection conn = new SQLiteConnection($"Data Source={sync_configdbPath}");
+            SQLiteConnection conn = new SQLiteConnection($"Data Source={snapshotPath}");
             conn.Open();
             string sql = "select filename from cloud_entry";
             SQLiteCommand command = new SQLiteCommand(sql, conn);
