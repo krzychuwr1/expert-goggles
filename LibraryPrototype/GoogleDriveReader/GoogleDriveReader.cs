@@ -63,7 +63,7 @@ namespace GoogleDrive
 
         public IEnumerable<string> SleuthKitTest()
         {
-            var disk = fileProvider.OpenDisk(@"C:\Users\kwrona\Documents\inzynierka\obraz1.dd");
+            var disk = fileProvider.OpenDisk(@"D:\Obrazy\obraz1.dd");
             return disk.GetAllFilePaths();
         }
 
