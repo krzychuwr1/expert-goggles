@@ -10,10 +10,8 @@ namespace GoogleDrive
 {
     public class LogReader
     {
-        public static void GetFilesHistoryFromLogs(string logsPath)
-        {
-            var logs = GetActionEntries(GetFileExtensionEntries(GenereteLogs(logsPath))).ToList();
-        }
+        public static IEnumerable<FileActionEntry> GetFilesHistoryFromLogs(string logsPath)
+            => GetActionEntries(GetFileExtensionEntries(GenereteLogs(logsPath)));
 
         private static IEnumerable<FileLogEntry> GenereteLogs(string logsPath)
         {

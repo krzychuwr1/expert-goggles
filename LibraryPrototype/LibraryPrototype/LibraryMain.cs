@@ -24,13 +24,7 @@ namespace LibraryPrototype
             googleDriveReader = Kernel.Get<IGoogleDriveReader>();   
         }
 
-        public void InitGoogleDrive() => googleDriveReader.Init();
-
-        public string GetGoogleDriveDataSummary() => googleDriveReader.GetCrucialDataSummary();
-
-        public IEnumerable<string> GetGoogleDriveFiles() => googleDriveReader.Filenames;
-
-        public void SleuthkitTest() => googleDriveReader.SleuthKitTest();
+        public IGoogleDriveReader GetGoogleDriveReader() => googleDriveReader;
          
     }
 }

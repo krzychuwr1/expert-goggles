@@ -12,12 +12,14 @@ namespace ClientApp
         static void Main(string[] args)
         {
             var library = new LibraryMain();
-            //library.InitGoogleDrive();
-            //Console.WriteLine(library.GetGoogleDriveDataSummary());
 
-            Console.WriteLine("FILES:");
+            Console.WriteLine("LOGS:");
 
-            library.SleuthkitTest();
+            foreach(var log in library.GetGoogleDriveReader().GetFileActionsForImage(@"C:\Users\kwrona\Documents\inzynierka\obraz1.dd"))
+            {
+                Console.WriteLine($"{log.FileName} {log.Action} {log.Direction} {log.Date} {log.Path}");
+            }
+            
             Console.ReadLine();
         }
     }

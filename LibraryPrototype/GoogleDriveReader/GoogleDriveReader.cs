@@ -25,7 +25,7 @@ namespace GoogleDrive
 
         string GetCrucialDataSummary();
 
-        void SleuthKitTest();
+        IEnumerable<FileActionEntry> GetFileActionsForImage(string diskPath);
     }
 
     public class GoogleDriveReader : IGoogleDriveReader
@@ -62,9 +62,9 @@ namespace GoogleDrive
             GetSnapshotData(drivePath);
         }
 
-        public void SleuthKitTest()
+        public IEnumerable<FileActionEntry> GetFileActionsForImage(string diskPath)
         {
-            var disk = fileProvider.OpenDisk(@"C:\Users\kwrona\Documents\inzynierka\obraz1.dd");
+            var disk = fileProvider.OpenDisk(diskPath);
 
             var userName = disk.GetAllUsers().Single();
 
@@ -72,7 +72,7 @@ namespace GoogleDrive
 
             var path = stream.SaveAsFile();
 
-            LogReader.GetFilesHistoryFromLogs(path);
+            return LogReader.GetFilesHistoryFromLogs(path);
             
         }
 

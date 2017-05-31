@@ -90,6 +90,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GoogleDriveReader\GoogleDriveReader.csproj">
+      <Project>{9CF1F85F-149E-454D-AD1A-D9E2054DE67E}</Project>
+      <Name>GoogleDriveReader</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LibraryPrototype\LibraryPrototype.csproj">
       <Project>{AA66E7C1-0F0D-4061-9E0E-AAF0D830D4C4}</Project>
       <Name>LibraryPrototype</Name>
