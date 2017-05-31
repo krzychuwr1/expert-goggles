@@ -55,7 +55,7 @@ namespace GoogleDrive
 
                 var action = Enum.Parse(typeof(Action), filterFSChangeParameter(fschangeParameters, "Action", '.')) as Action?;
 
-                var path = filterFSChangeParameter(fschangeParameters, "path", '\'');
+                var path = filterFSChangeParameter(fschangeParameters, "path", '\'').TrimStart('\\', '?').Replace(@"\\", @"\");
                 
                 long.TryParse(filterFSChangeParameter(fschangeParameters, "size", '='), out var fileSize);
 

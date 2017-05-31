@@ -17,7 +17,11 @@ namespace ClientApp
 
             foreach(var log in library.GetGoogleDriveReader().GetFileActionsForImage(@"C:\Users\kwrona\Documents\inzynierka\obraz1.dd"))
             {
-                Console.WriteLine($"{log.FileName} {log.Action} {log.Direction} {log.Date} {log.Path}");
+                Console.WriteLine(log.FileName.PadRight(20)
+                    + log.Action.ToString().PadRight(10)
+                    + log.Direction.ToString().PadRight(10)
+                    + log.Date.ToString().PadRight(25)
+                    + log.Path);
             }
             
             Console.ReadLine();
