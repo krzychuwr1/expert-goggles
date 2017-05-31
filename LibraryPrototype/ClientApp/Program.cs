@@ -17,10 +17,7 @@ namespace ClientApp
 
             Console.WriteLine("FILES:");
 
-            foreach(var file in library.SleuthkitTest())
-            {
-                Console.WriteLine(file);
-            }
+            library.SleuthkitTest();
             Console.ReadLine();
         }
     }

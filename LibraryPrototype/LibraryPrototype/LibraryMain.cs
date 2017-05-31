@@ -30,7 +30,7 @@ namespace LibraryPrototype
 
         public IEnumerable<string> GetGoogleDriveFiles() => googleDriveReader.Filenames;
 
-        public IEnumerable<string> SleuthkitTest() => googleDriveReader.SleuthKitTest();
+        public void SleuthkitTest() => googleDriveReader.SleuthKitTest();
          
     }
 }

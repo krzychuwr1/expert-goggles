@@ -24,7 +24,7 @@ namespace GoogleDrive
 
         string GetCrucialDataSummary();
 
-        IEnumerable<string> SleuthKitTest();
+        void SleuthKitTest();
     }
 
     public class GoogleDriveReader : IGoogleDriveReader
@@ -62,9 +62,14 @@ namespace GoogleDrive
         }
 
         public IEnumerable<string> SleuthKitTest()
+        public void SleuthKitTest()
         {
             var disk = fileProvider.OpenDisk(@"D:\Obrazy\obraz1.dd");
-            return disk.GetAllFilePaths();
+
+            foreach(var userName in disk.GetAllUsers())
+            {
+                Console.WriteLine(userName);
+            }
         }
 
         private void GetSyncConfigData(string drivePath)

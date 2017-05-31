@@ -42,5 +42,29 @@ namespace LibraryShared
             filePaths.Add(string.Format("{0}{1}", directoryPath, file.Name));
             return WalkReturnEnum.Continue;
         }
+
+
+        public IEnumerable<string> GetAllUsers()
+        {
+            var users = new HashSet<string>();
+
+            WalkReturnEnum FindUsersCallback(ref TSK_FS_FILE file, string directoryPath, IntPtr dataPtr)
+            {
+                if(directoryPath.StartsWith("Users") && directoryPath.Count(c => c == '/') == 2)
+                {
+                    users.Add(directoryPath.Split('/')[1]);
+                }
+                return WalkReturnEnum.Continue;
+            }
+            
+            using (FileSystem fileSystem = diskImage.OpenFileSystem())
+            {
+                fileSystem.WalkDirectories(
+                    FindUsersCallback,
+                    DirWalkFlags.Recurse | DirWalkFlags.Unallocated);
+            }
+
+            return users;
+        }
     }
 }
