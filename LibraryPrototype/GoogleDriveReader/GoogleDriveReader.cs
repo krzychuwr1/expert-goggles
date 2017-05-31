@@ -61,7 +61,6 @@ namespace GoogleDrive
             GetSnapshotData(drivePath);
         }
 
-        public IEnumerable<string> SleuthKitTest()
         public void SleuthKitTest()
         {
             var disk = fileProvider.OpenDisk(@"D:\Obrazy\obraz1.dd");
