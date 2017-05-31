@@ -12,7 +12,7 @@ namespace GoogleDrive
     {
         public static void GetFilesHistoryFromLogs(string logsPath)
         {
-            var logs = GenereteLogs(logsPath).Take(5).ToList();
+            var logs = GetActionEntries(GetFileExtensionEntries(GenereteLogs(logsPath))).ToList();
         }
 
         private static IEnumerable<FileLogEntry> GenereteLogs(string logsPath)
@@ -32,5 +32,49 @@ namespace GoogleDrive
                 }
             }
         }
+
+        public static IEnumerable<FileLogEntry> GetFileExtensionEntries(IEnumerable<FileLogEntry> logs)
+        {
+            foreach(var log in logs)
+            {
+                if (log.Log.Contains("name=u'") && log.Log.Contains("FSChange("))
+                {
+                    log.Log = log.Log.Substring(log.Log.IndexOf("FSChange("));
+                    yield return log;
+                }
+            }
+        }
+
+        public static IEnumerable<FileActionEntry> GetActionEntries(IEnumerable<FileLogEntry> logs)
+        {
+            foreach (var log in logs)
+            {
+                var fschangeParameters = new string(log.Log.SkipWhile(c => c != '(').ToArray()).Trim('(', ')').Split(',');
+
+                var fileName = filterFSChangeParameter(fschangeParameters, "name", '\'');
+
+                var direction = Enum.Parse(typeof(Direction), filterFSChangeParameter(fschangeParameters, "Direction", '.')) as Direction?;
+
+                var action = Enum.Parse(typeof(Action), filterFSChangeParameter(fschangeParameters, "Action", '.')) as Action?;
+
+                var path = filterFSChangeParameter(fschangeParameters, "path", '\'');
+                
+                long.TryParse(filterFSChangeParameter(fschangeParameters, "size", '='), out var fileSize);
+
+                yield return new FileActionEntry()
+                {
+                    FileName = fileName,
+                    Direction = direction,
+                    Action = action,
+                    Date = log.Date,
+                    Path = path,
+                    FileSize = fileSize
+                };
+            }
+        }
+
+        private static string filterFSChangeParameter(string[] fschangeParameters, string parameterName, char trimChar)
+            => new string(fschangeParameters.FirstOrDefault(f => f.Trim().StartsWith(parameterName))?.SkipWhile(c => c != trimChar)?.ToArray())?.Trim(trimChar);
     }
+
 }

@@ -55,7 +55,7 @@
   <ItemGroup>
     <Compile Include="Exceptions\NoRegistryKeyException.cs" />
     <Compile Include="FileLogEntry.cs" />
-    <Compile Include="FileModifiedEntry.cs" />
+    <Compile Include="FileActionEntry.cs" />
     <Compile Include="GoogleDriveReader.cs" />
     <Compile Include="LogReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
