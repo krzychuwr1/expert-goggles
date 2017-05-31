@@ -68,11 +68,11 @@ namespace GoogleDrive
 
             var userName = disk.GetAllUsers().Single();
 
-            var stream = new MemoryStream(disk.GetFileBytes($@"Users/{userName}/AppData/Local/Google/Drive/user_default/snapshot.db"));
+            var stream = new MemoryStream(disk.GetFileBytes($@"Users/{userName}/AppData/Local/Google/Drive/user_default/sync_log.log"));
 
             var path = stream.SaveAsFile();
 
-            GetSnapshotData(path);
+            LogReader.GetFilesHistoryFromLogs(path);
             
         }
 
@@ -100,6 +100,11 @@ namespace GoogleDrive
 
             conn.Close();
             AllData = builder.ToString();
+        }
+
+        private void GetFilesHistoryFromLogs(string logsPath)
+        {
+            File.ReadLines(logsPath);
         }
 
         private void GetSnapshotData(string snapshotPath)
