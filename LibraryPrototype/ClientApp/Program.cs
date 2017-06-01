@@ -13,15 +13,27 @@ namespace ClientApp
         {
             var library = new LibraryMain();
 
-            Console.WriteLine("LOGS:");
+            Console.WriteLine("Provide disk image location:");
 
-            foreach(var log in library.GetGoogleDriveReader().GetFileActionsForImage(@"C:\Users\kwrona\Documents\inzynierka\obraz1.dd"))
+            var path = Console.ReadLine();
+            try
             {
-                Console.WriteLine(log.FileName.PadRight(20)
-                    + log.Action.ToString().PadRight(10)
-                    + log.Direction.ToString().PadRight(10)
-                    + log.Date.ToString().PadRight(25)
-                    + log.Path);
+                foreach(var log in library.GetGoogleDriveReader().GetFileActionsForImage(path))
+                {
+                    Console.WriteLine(log.FileName.PadRight(20)
+                        + log.Action.ToString().PadRight(10)
+                        + log.Direction.ToString().PadRight(10)
+                        + log.Date.ToString().PadRight(25)
+                        + log.Path);
+                }
+            }
+            catch(ArgumentException e)
+            {
+                Console.WriteLine("Incorrect Path!");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Couldn't read this disk!");
             }
             
             Console.ReadLine();
