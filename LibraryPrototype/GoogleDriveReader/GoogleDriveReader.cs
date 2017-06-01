@@ -25,7 +25,7 @@ namespace GoogleDrive
 
         string GetCrucialDataSummary();
 
-        IEnumerable<FileActionEntry> GetFileActionsForImage(string diskPath);
+        IEnumerable<FileActionEntry> GetFileActionsForImage(string diskPath, Action? actionType = null, Direction? direction = null);
     }
 
     public class GoogleDriveReader : IGoogleDriveReader
@@ -62,7 +62,7 @@ namespace GoogleDrive
             GetSnapshotData(drivePath);
         }
 
-        public IEnumerable<FileActionEntry> GetFileActionsForImage(string diskPath)
+        public IEnumerable<FileActionEntry> GetFileActionsForImage(string diskPath, Action? actionType = null, Direction? direction = null)
         {
             var disk = fileProvider.OpenDisk(diskPath);
 
@@ -72,7 +72,12 @@ namespace GoogleDrive
 
             var path = stream.SaveAsFile();
 
-            return LogReader.GetFilesHistoryFromLogs(path);
+            var result = LogReader.GetFilesHistoryFromLogs(path);
+
+            if (actionType != null) result = result.Where(entry => entry.Action == actionType);
+            if (direction != null) result = result.Where(entry => entry.Direction == direction);
+
+            return result;
             
         }
 

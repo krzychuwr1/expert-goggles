@@ -18,7 +18,10 @@ namespace ClientApp
             var path = Console.ReadLine();
             try
             {
-                foreach(var log in library.GetGoogleDriveReader().GetFileActionsForImage(path))
+                var fileActions = library.GetGoogleDriveReader().GetFileActionsForImage(path, GoogleDrive.Action.CREATE);
+                Console.WriteLine("FILENAME".PadRight(20) + "ACTION".PadRight(10) + "DIRECTION".PadRight(10) + "TIME".PadRight(25) + "PATH");
+
+                foreach(var log in fileActions)
                 {
                     Console.WriteLine(log.FileName.PadRight(20)
                         + log.Action.ToString().PadRight(10)

@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace GoogleDrive
@@ -20,7 +21,7 @@ namespace GoogleDrive
             {
                 if (reg.IsMatch(line))
                 {
-                    var lineParts = line.Split(' ');
+                    var lineParts = line.Split(' ');                    
                     yield return new FileLogEntry()
                     {
                         Date = DateTime.Parse($"{lineParts[0]} {lineParts[1].Replace(',', '.')}"),
@@ -58,6 +59,8 @@ namespace GoogleDrive
                 var path = filterFSChangeParameter(fschangeParameters, "path", '\'').TrimStart('\\', '?').Replace(@"\\", @"\");
                 
                 long.TryParse(filterFSChangeParameter(fschangeParameters, "size", '='), out var fileSize);
+
+                Thread.Sleep(400);
 
                 yield return new FileActionEntry()
                 {
