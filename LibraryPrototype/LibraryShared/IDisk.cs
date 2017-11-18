@@ -8,5 +8,6 @@ namespace LibraryShared
 		IEnumerable<string> GetAllFilePaths();
 		IEnumerable<string> GetAllUsers();
 		Stream GetFile(string path);
+        string GetLocalFilePath(string path);
 	}
 }

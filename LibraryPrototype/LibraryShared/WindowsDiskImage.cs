@@ -85,5 +85,13 @@ namespace LibraryShared
                 return new MemoryStream(buffer);
             }
         }
+
+        public string GetLocalFilePath(string path)
+        {
+            using (var fileStream = GetFile(path))
+            {
+                return fileStream.SaveAsFile();
+            }
+        }
     }
 }

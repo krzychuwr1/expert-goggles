@@ -3,8 +3,9 @@ using System.Collections.Generic;
 
 namespace LibraryShared
 {
-    public interface IReader<T> 
+    public interface IReader<EntryType,MetadataType> 
     {
-        IEnumerable<T> GetData();
+        IEnumerable<EntryType> GetData();
+        MetadataType GetMetadata();
     }
 }

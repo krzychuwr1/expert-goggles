@@ -12,20 +12,8 @@ using Action = GoogleDrive.Action;
 
 namespace GoogleDriveReader
 {
-    public interface IGoogleDriveReader : IReader<FileActionEntry>
+    public interface IGoogleDriveReader : IReader<FileActionEntry,GoogleDriveMetadata>
     {
-        void Init();
-
-        string UserEmail { get; }
-
-        string AllData { get; }
-
-        string AppVersion { get; }
-
-        IEnumerable<string> Filenames {get;}
-
-        string GetCrucialDataSummary();
-
         IEnumerable<FileActionEntry> GetData(Action? actionType = null, Direction? direction = null);
     }
 
@@ -33,42 +21,37 @@ namespace GoogleDriveReader
     {
         private IDisk Disk;
 
-        public string UserEmail { get; private set; }
-
-        public string AllData { get; private set; }
-
-        public string AppVersion { get; private set; }
-
-        private List<string> filenames = new List<string>();
-
-        public IEnumerable<string> Filenames { get => filenames; }
-
         public GoogleDriveReader(IDisk disk)
         {
             Disk = disk;
         }
 
-        public void Init()
-        {
-            var drivePath = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Google\Drive", "Path", null) as string;
+        //public void Init()
+        //{
+        //    var drivePath = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Google\Drive", "Path", null) as string;
 
-            AppVersion = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Google\Drive", "FileManagerRestartedVersion", null) as string;
+        //    AppVersion = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Google\Drive", "FileManagerRestartedVersion", null) as string;
 
-            if (drivePath is null)
-            {
-                throw new NoRegistryKeyException("Google drive path not found");
-            }
+        //    if (drivePath is null)
+        //    {
+        //        throw new NoRegistryKeyException("Google drive path not found");
+        //    }
 
-            GetSyncConfigData(drivePath);
-            GetSnapshotData(drivePath);
-        }
+        //    GetSyncConfigData(drivePath);
+        //    GetSnapshotData(drivePath);
+        //}
 
-	    private string FindLogFile(IDisk disk)
+	    private string FindLogFile()
 	    {
-			var userName = disk.GetAllUsers().Single(x => x == "mdzpr");
-
-		    return $@"C://Users/{userName}/AppData/Local/Google/Drive/user_default/sync_log.log";
+			var userName = Disk.GetAllUsers().Single();
+		    return $@"Users/{userName}/AppData/Local/Google/Drive/user_default/sync_log.log";
 	    }
+
+        private string FindDbPath()
+        {
+			var userName = Disk.GetAllUsers().Single();
+            return Disk.GetLocalFilePath($@"Users/{userName}/AppData/Local/Google/Drive/user_default/sync_config.db");
+        }
 
         public IEnumerable<FileActionEntry> GetData()
         {
@@ -77,7 +60,7 @@ namespace GoogleDriveReader
 
 		public IEnumerable<FileActionEntry> GetData(Action? actionType = null, Direction? direction = null)
         {
-            var stream = Disk.GetFile(FindLogFile(Disk));
+            var stream = Disk.GetFile(FindLogFile());
 
             var result = LogReader.GetFilesHistoryFromLogs(stream);
 
@@ -87,30 +70,32 @@ namespace GoogleDriveReader
             return result;
         }
 
-        private void GetSyncConfigData(string drivePath)
+        private string GetUserEmail()
         {
-            var sync_configdbPath = $@"{drivePath}user_default\sync_config.db";
+            var sync_configdbPath = FindDbPath();
 
-            SQLiteConnection conn = new SQLiteConnection($"Data Source={sync_configdbPath}");
-            conn.Open();
-            string sql = "select * from data";
-            SQLiteCommand command = new SQLiteCommand(sql, conn);
-            SQLiteDataReader reader = command.ExecuteReader();
-            StringBuilder builder = new StringBuilder();
-            while (reader.Read())
+            using (var conn = new SQLiteConnection($"Data Source={sync_configdbPath}"))
             {
-                var entryKey = reader["entry_key"] as string;
-                var entryValue = reader["data_value"] as string;
-
-                builder.AppendLine($"key: {entryKey}, value: {entryValue}");
-                if (entryKey == "user_email")
+                conn.Open();
+                string sql = "select * from data";
+                SQLiteCommand command = new SQLiteCommand(sql, conn);
+                SQLiteDataReader reader = command.ExecuteReader();
+                StringBuilder builder = new StringBuilder();
+                while (reader.Read())
                 {
-                    UserEmail = entryValue;
-                }
-            }
+                    var entryKey = reader["entry_key"] as string;
+                    var entryValue = reader["data_value"] as string;
 
-            conn.Close();
-            AllData = builder.ToString();
+                    builder.AppendLine($"key: {entryKey}, value: {entryValue}");
+                    if (entryKey == "user_email")
+                    {
+                        return entryValue;
+                    }
+                }
+                conn.Close(); 
+            }
+            return string.Empty;
+            //AllData = builder.ToString();
         }
 
         private void GetFilesHistoryFromLogs(string logsPath)
@@ -130,16 +115,20 @@ namespace GoogleDriveReader
             {
                 var filename = reader["filename"] as string;
 
-                filenames.Add(filename);
+                //filenames.Add(filename);
             }
 
             conn.Close();
-            AllData = builder.ToString();
+            //AllData = builder.ToString();
         }
 
-        public string GetCrucialDataSummary()
-            => $"Email: {UserEmail} {Environment.NewLine}" +
-               $"AppVersion: {AppVersion}";
-        
+        public GoogleDriveMetadata GetMetadata()
+        {
+
+            return new GoogleDriveMetadata
+            {
+                UserEmail = GetUserEmail()
+            };
+        }
     }
 }

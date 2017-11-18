@@ -19,8 +19,10 @@ namespace ClientApp
             var path = Console.ReadLine();
             try
             {
-                var disk = new DiskProvider().OpenDisk();
-                var fileActions = library.GetGoogleDriveReader(disk).GetData(GoogleDrive.Action.CREATE);
+                var disk = new DiskProvider().OpenDisk(path);
+                GoogleDriveReader.IGoogleDriveReader googleDriveReader = library.GetGoogleDriveReader(disk);
+                var fileActions = googleDriveReader.GetData(GoogleDrive.Action.CREATE);
+                var metadata = googleDriveReader.GetMetadata();
                 Console.WriteLine("FILENAME".PadRight(20) + "ACTION".PadRight(10) + "DIRECTION".PadRight(10) + "TIME".PadRight(25) + "PATH");
 
                 foreach(var log in fileActions)

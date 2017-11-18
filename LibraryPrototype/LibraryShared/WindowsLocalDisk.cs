@@ -29,5 +29,10 @@ namespace LibraryShared
 		{
             return File.OpenRead(path);
 		}
-	}
+
+        public string GetLocalFilePath(string path)
+        {
+            return path;
+        }
+    }
 }
