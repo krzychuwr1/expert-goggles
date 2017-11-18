@@ -98,6 +98,10 @@
       <Project>{AA66E7C1-0F0D-4061-9E0E-AAF0D830D4C4}</Project>
       <Name>LibraryPrototype</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LibraryShared\LibraryShared.csproj">
+      <Project>{C9308DB6-46B4-43AB-BE83-0AFBD46CFEC4}</Project>
+      <Name>LibraryShared</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="ewf.net.dll">

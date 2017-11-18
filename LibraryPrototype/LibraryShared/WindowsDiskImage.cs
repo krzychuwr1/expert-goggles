@@ -68,7 +68,7 @@ namespace LibraryShared
             return users;
         }
 
-        public MemoryStream GetFile(string path)
+        public Stream GetFile(string path)
         {
             using (FileSystem fileSystem = diskImage.OpenFileSystem())
             {

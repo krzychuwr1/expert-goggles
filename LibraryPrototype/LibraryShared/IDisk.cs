@@ -7,6 +7,6 @@ namespace LibraryShared
 	{
 		IEnumerable<string> GetAllFilePaths();
 		IEnumerable<string> GetAllUsers();
-		MemoryStream GetFile(string path);
+		Stream GetFile(string path);
 	}
 }

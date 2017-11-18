@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GoogleDriveReader;
+using Ninject.Parameters;
 
 namespace LibraryPrototype
 {
@@ -22,10 +23,9 @@ namespace LibraryPrototype
         public LibraryMain()
         {
             kernel.ConfigureBindings();
-            googleDriveReader = Kernel.Get<IGoogleDriveReader>();   
         }
 
-        public IGoogleDriveReader GetGoogleDriveReader() => googleDriveReader;
+        public IGoogleDriveReader GetGoogleDriveReader(IDisk disk) => new GoogleDriveReader.GoogleDriveReader(disk);
          
     }
 }

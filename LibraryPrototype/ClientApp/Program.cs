@@ -1,4 +1,5 @@
 ﻿using LibraryPrototype;
+using LibraryShared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,8 @@ namespace ClientApp
             var path = Console.ReadLine();
             try
             {
-                var fileActions = library.GetGoogleDriveReader().GetFileActionsForImage(path, GoogleDrive.Action.CREATE);
+                var disk = new DiskProvider().OpenDisk();
+                var fileActions = library.GetGoogleDriveReader(disk).GetData(GoogleDrive.Action.CREATE);
                 Console.WriteLine("FILENAME".PadRight(20) + "ACTION".PadRight(10) + "DIRECTION".PadRight(10) + "TIME".PadRight(25) + "PATH");
 
                 foreach(var log in fileActions)

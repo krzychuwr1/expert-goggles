@@ -12,7 +12,7 @@ using Action = GoogleDrive.Action;
 
 namespace GoogleDriveReader
 {
-    public interface IGoogleDriveReader
+    public interface IGoogleDriveReader : IReader<FileActionEntry>
     {
         void Init();
 
@@ -26,12 +26,12 @@ namespace GoogleDriveReader
 
         string GetCrucialDataSummary();
 
-        IEnumerable<FileActionEntry> GetFileActionsForImage(string diskPath, Action? actionType = null, Direction? direction = null);
+        IEnumerable<FileActionEntry> GetData(Action? actionType = null, Direction? direction = null);
     }
 
     public class GoogleDriveReader : IGoogleDriveReader
     {
-        private readonly IDiskProvider diskProvider;
+        private IDisk Disk;
 
         public string UserEmail { get; private set; }
 
@@ -43,9 +43,9 @@ namespace GoogleDriveReader
 
         public IEnumerable<string> Filenames { get => filenames; }
 
-        public GoogleDriveReader(IDiskProvider diskProvider)
+        public GoogleDriveReader(IDisk disk)
         {
-            this.diskProvider = diskProvider;
+            Disk = disk;
         }
 
         public void Init()
@@ -65,25 +65,26 @@ namespace GoogleDriveReader
 
 	    private string FindLogFile(IDisk disk)
 	    {
-			var userName = disk.GetAllUsers().Single();
+			var userName = disk.GetAllUsers().Single(x => x == "mdzpr");
 
-		    return $@"Users/{userName}/AppData/Local/Google/Drive/user_default/sync_log.log";
+		    return $@"C://Users/{userName}/AppData/Local/Google/Drive/user_default/sync_log.log";
 	    }
 
-		public IEnumerable<FileActionEntry> GetFileActionsForImage(string diskPath, Action? actionType = null, Direction? direction = null)
+        public IEnumerable<FileActionEntry> GetData()
         {
-            var disk = diskProvider.OpenDisk(diskPath);
+            return GetData(null, null);
+        }
 
-            var stream = disk.GetFile(FindLogFile(disk));
+		public IEnumerable<FileActionEntry> GetData(Action? actionType = null, Direction? direction = null)
+        {
+            var stream = Disk.GetFile(FindLogFile(Disk));
 
             var result = LogReader.GetFilesHistoryFromLogs(stream);
-
 
             if (actionType != null) result = result.Where(entry => entry.Action == actionType);
             if (direction != null) result = result.Where(entry => entry.Direction == direction);
 
             return result;
-            
         }
 
         private void GetSyncConfigData(string drivePath)
@@ -119,7 +120,6 @@ namespace GoogleDriveReader
 
         private void GetSnapshotData(string snapshotPath)
         {
-
             SQLiteConnection conn = new SQLiteConnection($"Data Source={snapshotPath}");
             conn.Open();
             string sql = "select filename from cloud_entry";

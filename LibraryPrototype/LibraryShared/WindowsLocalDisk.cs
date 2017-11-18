@@ -25,9 +25,9 @@ namespace LibraryShared
 			}
 		}
 
-		public MemoryStream GetFile(string path)
+		public Stream GetFile(string path)
 		{
-			throw new NotImplementedException();
+            return File.OpenRead(path);
 		}
 	}
 }
