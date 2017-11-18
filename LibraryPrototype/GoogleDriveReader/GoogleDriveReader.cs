@@ -1,15 +1,16 @@
-﻿using LibraryShared;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
+using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Data.SQLite;
-using Microsoft.Win32;
+using GoogleDrive;
 using GoogleDrive.Exceptions;
-using System.IO;
+using LibraryShared;
+using Microsoft.Win32;
+using Action = GoogleDrive.Action;
 
-namespace GoogleDrive
+namespace GoogleDriveReader
 {
     public interface IGoogleDriveReader
     {
@@ -62,17 +63,23 @@ namespace GoogleDrive
             GetSnapshotData(drivePath);
         }
 
-        public IEnumerable<FileActionEntry> GetFileActionsForImage(string diskPath, Action? actionType = null, Direction? direction = null)
+	    private string FindLogFile(FileProviderDisk disk)
+	    {
+			var userName = disk.GetAllUsers().Single();
+
+		    return $@"Users/{userName}/AppData/Local/Google/Drive/user_default/sync_log.log";
+	    }
+
+		public IEnumerable<FileActionEntry> GetFileActionsForImage(string diskPath, Action? actionType = null, Direction? direction = null)
         {
             var disk = fileProvider.OpenDisk(diskPath);
 
-            var userName = disk.GetAllUsers().Single();
-
-            var stream = new MemoryStream(disk.GetFileBytes($@"Users/{userName}/AppData/Local/Google/Drive/user_default/sync_log.log"));
+            var stream = disk.GetFile(FindLogFile(disk));
 
             var path = stream.SaveAsFile();
 
             var result = LogReader.GetFilesHistoryFromLogs(path);
+
 
             if (actionType != null) result = result.Where(entry => entry.Action == actionType);
             if (direction != null) result = result.Where(entry => entry.Direction == direction);

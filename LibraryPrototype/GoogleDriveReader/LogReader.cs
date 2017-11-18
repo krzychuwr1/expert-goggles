@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading;
-using System.Threading.Tasks;
+using GoogleDrive;
+using Action = GoogleDrive.Action;
 
-namespace GoogleDrive
+namespace GoogleDriveReader
 {
     public class LogReader
     {
@@ -59,8 +58,6 @@ namespace GoogleDrive
                 var path = filterFSChangeParameter(fschangeParameters, "path", '\'').TrimStart('\\', '?').Replace(@"\\", @"\");
                 
                 long.TryParse(filterFSChangeParameter(fschangeParameters, "size", '='), out var fileSize);
-
-                Thread.Sleep(400);
 
                 yield return new FileActionEntry()
                 {

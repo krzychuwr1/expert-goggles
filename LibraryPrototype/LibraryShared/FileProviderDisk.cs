@@ -81,7 +81,7 @@ namespace LibraryShared
             }
         }
 
-        public byte[] GetFileBytes(string path)
+        public MemoryStream GetFile(string path)
         {
             using (FileSystem fileSystem = diskImage.OpenFileSystem())
             {
@@ -95,7 +95,7 @@ namespace LibraryShared
 
                 file.ReadBytes(0, buffer, (int)file.Size);
 
-                return buffer;
+                return new MemoryStream(buffer);
             }
         }
     }
