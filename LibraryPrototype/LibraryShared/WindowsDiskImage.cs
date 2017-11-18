@@ -9,13 +9,13 @@ using System.IO;
 
 namespace LibraryShared
 {
-    public class FileProviderDisk
+    public class WindowsDiskImage : IDisk
     {
         private DiskImage diskImage;
 
         private List<string> filePaths = new List<string>();
 
-        public FileProviderDisk(DiskImage diskImage)
+        public WindowsDiskImage(DiskImage diskImage)
         {
             this.diskImage = diskImage;
         }
@@ -66,19 +66,6 @@ namespace LibraryShared
             }
 
             return users;
-        }
-
-        public Stream GetFileStream(string path)
-        {
-            using (FileSystem fileSystem = diskImage.OpenFileSystem())
-            {
-                var file = fileSystem.OpenFile(path);
-                if (file == null)
-                {
-                    throw new FileNotFoundException();
-                }
-                return file.OpenRead();
-            }
         }
 
         public MemoryStream GetFile(string path)

@@ -31,7 +31,7 @@ namespace GoogleDriveReader
 
     public class GoogleDriveReader : IGoogleDriveReader
     {
-        private readonly IFileProvider fileProvider;
+        private readonly IDiskProvider diskProvider;
 
         public string UserEmail { get; private set; }
 
@@ -43,9 +43,9 @@ namespace GoogleDriveReader
 
         public IEnumerable<string> Filenames { get => filenames; }
 
-        public GoogleDriveReader(IFileProvider fileProvider)
+        public GoogleDriveReader(IDiskProvider diskProvider)
         {
-            this.fileProvider = fileProvider;
+            this.diskProvider = diskProvider;
         }
 
         public void Init()
@@ -63,7 +63,7 @@ namespace GoogleDriveReader
             GetSnapshotData(drivePath);
         }
 
-	    private string FindLogFile(FileProviderDisk disk)
+	    private string FindLogFile(IDisk disk)
 	    {
 			var userName = disk.GetAllUsers().Single();
 
@@ -72,7 +72,7 @@ namespace GoogleDriveReader
 
 		public IEnumerable<FileActionEntry> GetFileActionsForImage(string diskPath, Action? actionType = null, Direction? direction = null)
         {
-            var disk = fileProvider.OpenDisk(diskPath);
+            var disk = diskProvider.OpenDisk(diskPath);
 
             var stream = disk.GetFile(FindLogFile(disk));
 

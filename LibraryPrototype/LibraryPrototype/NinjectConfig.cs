@@ -15,7 +15,7 @@ namespace LibraryPrototype
         public static void ConfigureBindings(this IKernel kernel)
         {
             kernel.Bind<IGoogleDriveReader>().To<GoogleDriveReader.GoogleDriveReader>();
-            kernel.Bind<IFileProvider>().To<FileProvider>();
+            kernel.Bind<IDiskProvider>().To<DiskProvider>();
         }
 
     }
