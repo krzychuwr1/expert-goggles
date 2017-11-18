@@ -76,9 +76,7 @@ namespace GoogleDriveReader
 
             var stream = disk.GetFile(FindLogFile(disk));
 
-            var path = stream.SaveAsFile();
-
-            var result = LogReader.GetFilesHistoryFromLogs(path);
+            var result = LogReader.GetFilesHistoryFromLogs(stream);
 
 
             if (actionType != null) result = result.Where(entry => entry.Action == actionType);

@@ -10,14 +10,16 @@ namespace GoogleDriveReader
 {
     public class LogReader
     {
-        public static IEnumerable<FileActionEntry> GetFilesHistoryFromLogs(string logsPath)
-            => GetActionEntries(GetFileExtensionEntries(GenereteLogs(logsPath)));
+        public static IEnumerable<FileActionEntry> GetFilesHistoryFromLogs(Stream fileStream)
+            => GetActionEntries(GetFileExtensionEntries(GenereteLogs(fileStream)));
 
-        private static IEnumerable<FileLogEntry> GenereteLogs(string logsPath)
+        private static IEnumerable<FileLogEntry> GenereteLogs(Stream fileStream)
         {
             var reg = new Regex(@"^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2},\d{3}.*", RegexOptions.Compiled);
-            foreach (var line in File.ReadLines(logsPath))
-            {
+	        var streamReader = new StreamReader(fileStream);
+	        while (!streamReader.EndOfStream)
+	        {
+		        var line = streamReader.ReadLine();
                 if (reg.IsMatch(line))
                 {
                     var lineParts = line.Split(' ');                    
