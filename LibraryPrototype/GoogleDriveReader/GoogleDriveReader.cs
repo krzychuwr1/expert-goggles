@@ -19,48 +19,27 @@ namespace GoogleDriveReader
 
     public class GoogleDriveReader : IGoogleDriveReader
     {
-        private IDisk Disk;
+        private readonly IDisk _disk;
+	    private readonly string _userName;
 
-        public GoogleDriveReader(IDisk disk)
+        public GoogleDriveReader(IDisk disk, string userName)
         {
-            Disk = disk;
+	        _disk = disk;
+	        _userName = userName;
         }
 
-        //public void Init()
-        //{
-        //    var drivePath = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Google\Drive", "Path", null) as string;
+	    private string FindLogFile() => $@"Users/{_userName}/AppData/Local/Google/Drive/user_default/sync_log.log";
 
-        //    AppVersion = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Google\Drive", "FileManagerRestartedVersion", null) as string;
+	    private string FindDbPath() => _disk.GetLocalFilePath($@"Users/{_userName}/AppData/Local/Google/Drive/user_default/sync_config.db");
 
-        //    if (drivePath is null)
-        //    {
-        //        throw new NoRegistryKeyException("Google drive path not found");
-        //    }
-
-        //    GetSyncConfigData(drivePath);
-        //    GetSnapshotData(drivePath);
-        //}
-
-	    private string FindLogFile()
-	    {
-			var userName = Disk.GetAllUsers().Single();
-		    return $@"Users/{userName}/AppData/Local/Google/Drive/user_default/sync_log.log";
-	    }
-
-        private string FindDbPath()
-        {
-			var userName = Disk.GetAllUsers().Single();
-            return Disk.GetLocalFilePath($@"Users/{userName}/AppData/Local/Google/Drive/user_default/sync_config.db");
-        }
-
-        public IEnumerable<FileActionEntry> GetData()
+	    public IEnumerable<FileActionEntry> GetData()
         {
             return GetData(null, null);
         }
 
 		public IEnumerable<FileActionEntry> GetData(Action? actionType = null, Direction? direction = null)
         {
-            var stream = Disk.GetFile(FindLogFile());
+            var stream = _disk.GetFile(FindLogFile());
 
             var result = LogReader.GetFilesHistoryFromLogs(stream);
 
@@ -95,12 +74,6 @@ namespace GoogleDriveReader
                 conn.Close(); 
             }
             return string.Empty;
-            //AllData = builder.ToString();
-        }
-
-        private void GetFilesHistoryFromLogs(string logsPath)
-        {
-            File.ReadLines(logsPath);
         }
 
         private void GetSnapshotData(string snapshotPath)
@@ -130,5 +103,20 @@ namespace GoogleDriveReader
                 UserEmail = GetUserEmail()
             };
         }
-    }
+
+	    //public void Init()
+	    //{
+	    //    var drivePath = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Google\Drive", "Path", null) as string;
+
+	    //    AppVersion = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Google\Drive", "FileManagerRestartedVersion", null) as string;
+
+	    //    if (drivePath is null)
+	    //    {
+	    //        throw new NoRegistryKeyException("Google drive path not found");
+	    //    }
+
+	    //    GetSyncConfigData(drivePath);
+	    //    GetSnapshotData(drivePath);
+	    //}
+	}
 }

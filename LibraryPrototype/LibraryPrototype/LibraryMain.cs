@@ -25,7 +25,7 @@ namespace LibraryPrototype
             kernel.ConfigureBindings();
         }
 
-        public IGoogleDriveReader GetGoogleDriveReader(IDisk disk) => new GoogleDriveReader.GoogleDriveReader(disk);
+        public IGoogleDriveReader GetGoogleDriveReader(IDisk disk, string userName) => new GoogleDriveReader.GoogleDriveReader(disk, userName);
          
     }
 }
