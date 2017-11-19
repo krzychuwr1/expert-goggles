@@ -47,6 +47,7 @@
     <Compile Include="Exceptions\FileNotFoundException.cs" />
     <Compile Include="Interfaces\Disk\IDiskProvider.cs" />
     <Compile Include="Interfaces\Readers\Browsers\IBookmarksReader.cs" />
+    <Compile Include="Interfaces\Readers\Browsers\ICookiesReader.cs" />
     <Compile Include="Interfaces\Readers\Browsers\IDownloadsReader.cs" />
     <Compile Include="Interfaces\Readers\Browsers\ISearchTermsReader.cs" />
     <Compile Include="Interfaces\Readers\Cloud\ICloudEntriesReader.cs" />

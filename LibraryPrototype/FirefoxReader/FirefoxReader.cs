@@ -11,7 +11,7 @@ using LibraryShared.Interfaces.Readers.Browsers;
 
 namespace FirefoxReader
 {
-	public interface IFirefoxReader : IBrowsingHistoryReader<FirefoxHistoryEntry>, IBookmarksReader<FirefoxBookmarkEntry>
+	public interface IFirefoxReader : IBrowsingHistoryReader<FirefoxHistoryEntry>, IBookmarksReader<FirefoxBookmarkEntry>, ICookiesReader<FirefoxCookieEntry>
 	{
 	}
 
@@ -83,6 +83,29 @@ namespace FirefoxReader
 					    lastVisited = DateTimeOffset.FromUnixTimeSeconds(lastVisit / 1_000_000).LocalDateTime;
 					}
 					yield return new FirefoxBookmarkEntry(reader["url"] as string, reader["title"] as string ?? string.Empty, lastVisited, lastModified, (long)reader["visit_count"]);
+			    }
+			    conn.Close();
+		    }
+		}
+
+	    public IEnumerable<FirefoxCookieEntry> GetCookies()
+	    {
+		    var placesDbPath = _disk.GetLocalFilePath($@"{GetProfilePath()}\cookies.sqlite");
+
+		    using (var conn = new SQLiteConnection($"Data Source={placesDbPath}"))
+		    {
+			    conn.Open();
+			    string sql = "select * from moz_cookies";
+			    SQLiteCommand command = new SQLiteCommand(sql, conn);
+			    SQLiteDataReader reader = command.ExecuteReader();
+			    while (reader.Read())
+			    {
+				    var creationTime = DateTimeOffset.FromUnixTimeSeconds((long)reader["creationTime"] / 1_000_000).LocalDateTime;
+					var lastAccessed = DateTimeOffset.FromUnixTimeSeconds((long)reader["lastAccessed"] / 1_000_000).LocalDateTime;
+				    var expiryTime = DateTimeOffset.FromUnixTimeSeconds((long)reader["expiry"] / 1_000_000).LocalDateTime;
+
+
+				    yield return new FirefoxCookieEntry(reader["baseDomain"] as string, reader["name"] as string, reader["value"] as string, creationTime, lastAccessed, expiryTime);
 			    }
 			    conn.Close();
 		    }

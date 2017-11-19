@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="FirefoxReader.cs" />
     <Compile Include="Model\FirefoxBookmarkEntry.cs" />
+    <Compile Include="Model\FirefoxCookieEntry.cs" />
     <Compile Include="Model\FirefoxHistoryEntry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

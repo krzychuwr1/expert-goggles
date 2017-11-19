@@ -72,6 +72,15 @@ namespace ClientApp
 		    {
 			    Console.WriteLine($"{bookmarkEntry.Url.PadRight(70)} {bookmarkEntry.Title.PadRight(40)} {bookmarkEntry.LastModified.ToString().PadRight(25)} {bookmarkEntry.LastVisited.ToString().PadRight(25)} {bookmarkEntry.VisitCount.ToString().PadRight(15)} ");
 		    }
+
+		    var cookies = firefoxReader.GetCookies();
+
+			Console.WriteLine($"{"DOMAIN".PadRight(30)} {"NAME".PadRight(30)}");
+
+		    foreach (var cookie in cookies)
+		    {
+			    Console.WriteLine($"{cookie.Url.PadRight(30)} {cookie.Name.PadRight(30)}");
+		    }
 	    }
 
 	    private static void GoogleChromeTest(LibraryShared.Interfaces.Disk.IDisk disk, string userName)
