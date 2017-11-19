@@ -42,15 +42,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DiskProvider.cs" />
+    <Compile Include="Disk\DiskProvider.cs" />
     <Compile Include="Exceptions\FileNotFoundException.cs" />
-    <Compile Include="IDiskProvider.cs" />
-    <Compile Include="IReader.cs" />
-    <Compile Include="WindowsDiskImage.cs" />
-    <Compile Include="FileUtils.cs" />
-    <Compile Include="IDisk.cs" />
+    <Compile Include="Interfaces\Disk\IDiskProvider.cs" />
+    <Compile Include="Interfaces\Readers\Browsers\IDownloadsReader.cs" />
+    <Compile Include="Interfaces\Readers\Browsers\ISearchTermsReader.cs" />
+    <Compile Include="Interfaces\Readers\Cloud\ICloudEntriesReader.cs" />
+    <Compile Include="Interfaces\Readers\IMetadataReader.cs" />
+    <Compile Include="Disk\WindowsDiskImage.cs" />
+    <Compile Include="Extensions\FileUtils.cs" />
+    <Compile Include="Interfaces\Disk\IDisk.cs" />
+    <Compile Include="Interfaces\Readers\Browsers\IWebBrowserReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WindowsLocalDisk.cs" />
+    <Compile Include="Disk\WindowsLocalDisk.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\sleuthkit-sharp\sleuthkit-sharp.csproj">

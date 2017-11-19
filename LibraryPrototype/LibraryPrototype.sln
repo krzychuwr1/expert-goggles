@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.4
+VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryPrototype", "LibraryPrototype\LibraryPrototype.csproj", "{AA66E7C1-0F0D-4061-9E0E-AAF0D830D4C4}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryShared", "LibraryShared\LibraryShared.csproj", "{C9308DB6-46B4-43AB-BE83-0AFBD46CFEC4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sleuthkit-sharp", "sleuthkit-sharp\sleuthkit-sharp.csproj", "{828A2D64-EFAD-496C-A369-7C8658AE4FFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleChromeReader", "GoogleChromeReader\GoogleChromeReader.csproj", "{7DC71691-EE21-4E64-8E1F-E1FA463EF4A4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,8 +85,23 @@ Global
 		{828A2D64-EFAD-496C-A369-7C8658AE4FFA}.Release|x64.Build.0 = Release|x64
 		{828A2D64-EFAD-496C-A369-7C8658AE4FFA}.Release|x86.ActiveCfg = Release|x86
 		{828A2D64-EFAD-496C-A369-7C8658AE4FFA}.Release|x86.Build.0 = Release|x86
+		{7DC71691-EE21-4E64-8E1F-E1FA463EF4A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DC71691-EE21-4E64-8E1F-E1FA463EF4A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DC71691-EE21-4E64-8E1F-E1FA463EF4A4}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7DC71691-EE21-4E64-8E1F-E1FA463EF4A4}.Debug|x64.Build.0 = Debug|Any CPU
+		{7DC71691-EE21-4E64-8E1F-E1FA463EF4A4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7DC71691-EE21-4E64-8E1F-E1FA463EF4A4}.Debug|x86.Build.0 = Debug|Any CPU
+		{7DC71691-EE21-4E64-8E1F-E1FA463EF4A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DC71691-EE21-4E64-8E1F-E1FA463EF4A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DC71691-EE21-4E64-8E1F-E1FA463EF4A4}.Release|x64.ActiveCfg = Release|Any CPU
+		{7DC71691-EE21-4E64-8E1F-E1FA463EF4A4}.Release|x64.Build.0 = Release|Any CPU
+		{7DC71691-EE21-4E64-8E1F-E1FA463EF4A4}.Release|x86.ActiveCfg = Release|Any CPU
+		{7DC71691-EE21-4E64-8E1F-E1FA463EF4A4}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F574CB19-19AC-4122-92CF-C31EE68BD309}
 	EndGlobalSection
 EndGlobal

@@ -7,14 +7,17 @@ using System.Text;
 using GoogleDrive;
 using GoogleDrive.Exceptions;
 using LibraryShared;
+using LibraryShared.Interfaces.Disk;
+using LibraryShared.Interfaces.Readers;
+using LibraryShared.Interfaces.Readers.Cloud;
 using Microsoft.Win32;
 using Action = GoogleDrive.Action;
 
 namespace GoogleDriveReader
 {
-    public interface IGoogleDriveReader : IReader<FileActionEntry,GoogleDriveMetadata>
+    public interface IGoogleDriveReader : IMetadataReader<GoogleDriveMetadata>, ICloudEntriesReader<FileActionEntry>
     {
-        IEnumerable<FileActionEntry> GetData(Action? actionType = null, Direction? direction = null);
+        IEnumerable<FileActionEntry> GetEntries(Action? actionType = null, Direction? direction = null);
     }
 
     public class GoogleDriveReader : IGoogleDriveReader
@@ -32,12 +35,12 @@ namespace GoogleDriveReader
 
 	    private string FindDbPath() => _disk.GetLocalFilePath($@"Users/{_userName}/AppData/Local/Google/Drive/user_default/sync_config.db");
 
-	    public IEnumerable<FileActionEntry> GetData()
+	    public IEnumerable<FileActionEntry> GetEntries()
         {
-            return GetData(null, null);
+            return GetEntries(null, null);
         }
 
-		public IEnumerable<FileActionEntry> GetData(Action? actionType = null, Direction? direction = null)
+		public IEnumerable<FileActionEntry> GetEntries(Action? actionType = null, Direction? direction = null)
         {
             var stream = _disk.GetFile(FindLogFile());
 

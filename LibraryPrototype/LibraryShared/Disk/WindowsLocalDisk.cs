@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.DirectoryServices;
 using System.IO;
+using LibraryShared.Interfaces.Disk;
 
-namespace LibraryShared
+namespace LibraryShared.Disk
 {
 	public class WindowsLocalDisk : IDisk
 	{

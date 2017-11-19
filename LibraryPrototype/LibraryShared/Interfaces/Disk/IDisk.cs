@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace LibraryShared
+namespace LibraryShared.Interfaces.Disk
 {
 	public interface IDisk
 	{

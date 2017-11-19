@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GoogleDriveReader;
+using LibraryShared.Interfaces.Disk;
 using Ninject.Parameters;
 
 namespace LibraryPrototype

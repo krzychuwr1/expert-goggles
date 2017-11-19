@@ -1,4 +1,4 @@
-﻿namespace LibraryShared
+﻿namespace LibraryShared.Interfaces.Disk
 {
     public interface IDiskProvider
     {

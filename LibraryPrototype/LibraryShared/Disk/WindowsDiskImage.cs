@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using LibraryShared.Extensions;
+using LibraryShared.Interfaces.Disk;
 using SleuthKit;
 using SleuthKit.Structs;
-using System.IO;
 
-namespace LibraryShared
+namespace LibraryShared.Disk
 {
     public class WindowsDiskImage : IDisk
     {
