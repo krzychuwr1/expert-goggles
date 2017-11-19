@@ -11,7 +11,7 @@ using LibraryShared.Interfaces.Readers.Browsers;
 
 namespace GoogleChromeReader
 {
-	public interface IGoogleChromeReader : IBrowsingHistoryReader<ChromeHistoryEntry>, IDownloadsReader<ChromeDownloadEntry>
+	public interface IGoogleChromeReader : IBrowsingHistoryReader<ChromeHistoryEntry>, IDownloadsReader<ChromeDownloadEntry>, ISearchTermsReader<ChromeSearchTermEntry>
 	{
 	}
 
@@ -68,6 +68,25 @@ namespace GoogleChromeReader
 			}
 		}
 
+
 		private string HistoryDbPath => _disk.GetLocalFilePath($@"Users/{_userName}/AppData/Local/Google/Chrome/User Data/Default/History");
+
+		public IEnumerable<ChromeSearchTermEntry> GetSearchTermEntries()
+		{
+			using (var conn = new SQLiteConnection($"Data Source={HistoryDbPath}"))
+			{
+				conn.Open();
+				string sql = "select * from keyword_search_terms k inner join urls u on k.url_id = u.id order by u.last_visit_time desc";
+				SQLiteCommand command = new SQLiteCommand(sql, conn);
+				SQLiteDataReader reader = command.ExecuteReader();
+				StringBuilder builder = new StringBuilder();
+				while (reader.Read())
+				{
+					var lastSearchTime = ((long) reader["last_visit_time"]).ConvertToDateTimeFromChromeTimeStamp();
+					yield return new ChromeSearchTermEntry(reader["term"] as string, lastSearchTime, (long)reader["visit_count"]);
+				}
+				conn.Close();
+			}
+		}
 	}
 }

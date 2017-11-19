@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\ChromeSearchTermEntry.cs" />
     <Compile Include="Extensions\ChromeTimeStampExtension.cs" />
     <Compile Include="Model\ChromeDownloadEntry.cs" />
     <Compile Include="GoogleChromeReader.cs" />

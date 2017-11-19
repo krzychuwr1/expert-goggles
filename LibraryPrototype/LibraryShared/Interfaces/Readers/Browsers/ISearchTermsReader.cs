@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LibraryShared.Interfaces.Readers.Browsers
 {
-	interface ISearchTermsReader<out TSearchTermEntry>
+	public interface ISearchTermsReader<out TSearchTermEntry>
 	{
 		IEnumerable<TSearchTermEntry> GetSearchTermEntries();
 	}
