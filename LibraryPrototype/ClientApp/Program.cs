@@ -63,6 +63,15 @@ namespace ClientApp
 		    var historyEntries = firefoxReader.GetHistoryEntries();
 
 			PrintHistoryEntries(historyEntries);
+
+		    var bookmarksEntries = firefoxReader.GetBookmarkEntries();
+
+		    Console.WriteLine($"{"URL".PadRight(70)} {"TITLE".PadRight(40)} {"LAST MODIFIED".PadRight(25)} {"LAST VISITED".PadRight(25)} {"VISITS COUNT".PadRight(15)}");
+
+			foreach (var bookmarkEntry in bookmarksEntries)
+		    {
+			    Console.WriteLine($"{bookmarkEntry.Url.PadRight(70)} {bookmarkEntry.Title.PadRight(40)} {bookmarkEntry.LastModified.ToString().PadRight(25)} {bookmarkEntry.LastVisited.ToString().PadRight(25)} {bookmarkEntry.VisitCount.ToString().PadRight(15)} ");
+		    }
 	    }
 
 	    private static void GoogleChromeTest(LibraryShared.Interfaces.Disk.IDisk disk, string userName)

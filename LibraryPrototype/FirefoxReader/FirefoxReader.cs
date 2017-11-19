@@ -11,7 +11,7 @@ using LibraryShared.Interfaces.Readers.Browsers;
 
 namespace FirefoxReader
 {
-	public interface IFirefoxReader : IBrowsingHistoryReader<FirefoxHistoryEntry>
+	public interface IFirefoxReader : IBrowsingHistoryReader<FirefoxHistoryEntry>, IBookmarksReader<FirefoxBookmarkEntry>
 	{
 	}
 
@@ -64,5 +64,28 @@ namespace FirefoxReader
 
 	    private string FirefoxHomePath => $@"Users\{_userName}\AppData\Roaming\Mozilla\Firefox";
 
+	    public IEnumerable<FirefoxBookmarkEntry> GetBookmarkEntries()
+	    {
+		    var placesDbPath = _disk.GetLocalFilePath($@"{GetProfilePath()}\places.sqlite");
+
+		    using (var conn = new SQLiteConnection($"Data Source={placesDbPath}"))
+		    {
+			    conn.Open();
+			    string sql = "SELECT * FROM moz_bookmarks INNER JOIN moz_places ON moz_bookmarks.fk = moz_places.id";
+			    SQLiteCommand command = new SQLiteCommand(sql, conn);
+			    SQLiteDataReader reader = command.ExecuteReader();
+			    while (reader.Read())
+			    {
+				    var lastModified = DateTimeOffset.FromUnixTimeSeconds((long)reader["lastModified"] / 1_000_000).LocalDateTime;
+				    DateTime? lastVisited = null;
+				    if (reader["last_visit_date"] is long lastVisit)
+				    {
+					    lastVisited = DateTimeOffset.FromUnixTimeSeconds(lastVisit / 1_000_000).LocalDateTime;
+					}
+					yield return new FirefoxBookmarkEntry(reader["url"] as string, reader["title"] as string ?? string.Empty, lastVisited, lastModified, (long)reader["visit_count"]);
+			    }
+			    conn.Close();
+		    }
+		}
     }
 }
