@@ -38,7 +38,7 @@ namespace ClientApp
 
 		        GoogleDriveReader.IGoogleDriveReader googleDriveReader = library.GetGoogleDriveReader(disk, userName);
 		        var fileActions = googleDriveReader.GetData(GoogleDrive.Action.CREATE);
-		        var metadata = googleDriveReader.GetMetadata();
+		        //var metadata = googleDriveReader.GetMetadata();
 		        Console.WriteLine("FILENAME".PadRight(30) + "ACTION".PadRight(10) + "DIRECTION".PadRight(10) +
 		                          "TIME".PadRight(25) + "PATH");
 
