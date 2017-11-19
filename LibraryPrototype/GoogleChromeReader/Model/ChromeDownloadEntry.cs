@@ -1,8 +1,9 @@
 ﻿using System;
+using LibraryShared.Model;
 
 namespace GoogleChromeReader.Model
 {
-	public class ChromeDownloadEntry
+	public class ChromeDownloadEntry : IDownloadEntry
 	{
 		public string Url { get; }
 		public string Path { get; }

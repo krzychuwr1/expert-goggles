@@ -11,11 +11,11 @@ using LibraryShared.Interfaces.Readers.Browsers;
 
 namespace FirefoxReader
 {
-	public interface IFirefoxReader : IBrowsingHistoryReader<FirefoxHistoryEntry>, IBookmarksReader<FirefoxBookmarkEntry>, ICookiesReader<FirefoxCookieEntry>
+	public interface IFirefoxReader : IBrowsingHistoryReader<FirefoxHistoryEntry>, IBookmarksReader<FirefoxBookmarkEntry>, ICookiesReader<FirefoxCookieEntry>, IDownloadsReader<FirefoxDownloadEntry>
 	{
 	}
 
-    public class FirefoxReader : IFirefoxReader
+	public class FirefoxReader : IFirefoxReader
     {
 	    private readonly IDisk _disk;
 	    private readonly string _userName;
@@ -106,6 +106,25 @@ namespace FirefoxReader
 
 
 				    yield return new FirefoxCookieEntry(reader["baseDomain"] as string, reader["name"] as string, reader["value"] as string, creationTime, lastAccessed, expiryTime);
+			    }
+			    conn.Close();
+		    }
+		}
+
+	    public IEnumerable<FirefoxDownloadEntry> GetDownloadEntries()
+	    {
+		    var placesDbPath = _disk.GetLocalFilePath($@"{GetProfilePath()}\places.sqlite");
+
+		    using (var conn = new SQLiteConnection($"Data Source={placesDbPath}"))
+		    {
+			    conn.Open();
+			    string sql = "select * from moz_annos inner join moz_places on moz_annos.place_id = moz_places.id where moz_annos.anno_attribute_id = 4";
+			    SQLiteCommand command = new SQLiteCommand(sql, conn);
+			    SQLiteDataReader reader = command.ExecuteReader();
+			    while (reader.Read())
+			    {
+				    var startTime = DateTimeOffset.FromUnixTimeSeconds((long)reader["dateAdded"] / 1_000_000).LocalDateTime;
+					yield return new FirefoxDownloadEntry(reader["url"] as string, reader["content"] as string, startTime);
 			    }
 			    conn.Close();
 		    }

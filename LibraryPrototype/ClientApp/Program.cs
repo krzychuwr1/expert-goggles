@@ -81,6 +81,15 @@ namespace ClientApp
 		    {
 			    Console.WriteLine($"{cookie.Url.PadRight(30)} {cookie.Name.PadRight(30)}");
 		    }
+
+		    var downloads = firefoxReader.GetDownloadEntries();
+
+		    Console.WriteLine($"{"URL".PadRight(100)} {"PATH".PadRight(80)} {"START TIME".PadRight(25)}");
+
+		    foreach (var download in downloads)
+		    {
+			    Console.WriteLine($"{download.Url.PadRight(100)} {download.Path.PadRight(80)} {download.StartTime.ToString().PadRight(25)}");
+		    }
 	    }
 
 	    private static void GoogleChromeTest(LibraryShared.Interfaces.Disk.IDisk disk, string userName)

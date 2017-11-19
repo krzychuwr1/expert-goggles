@@ -56,7 +56,8 @@
     <Compile Include="Extensions\FileUtils.cs" />
     <Compile Include="Interfaces\Disk\IDisk.cs" />
     <Compile Include="Interfaces\Readers\Browsers\IWebBrowserReader.cs" />
-    <Compile Include="Model\HistoryEntry.cs" />
+    <Compile Include="Model\IDownloadEntry.cs" />
+    <Compile Include="Model\IHistoryEntry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Disk\WindowsLocalDisk.cs" />
   </ItemGroup>
