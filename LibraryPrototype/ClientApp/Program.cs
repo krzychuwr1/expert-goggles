@@ -7,6 +7,8 @@ namespace ClientApp
 {
     class Program
     {
+	    private const int SPad = 15;
+
         static void Main(string[] args)
         {
             Console.WriteLine("Provide disk image location: ");
@@ -54,11 +56,20 @@ namespace ClientApp
 			var googleChromeReader = new GoogleChromeReader.GoogleChromeReader(disk, userName);
 			var historyEntries = googleChromeReader.GetHistoryEntries();
 
-			Console.WriteLine($"{"TIME".PadRight(30)} {"URL".PadRight(30)} {"TITLE".PadRight(30)}");
+			//Console.WriteLine($"{"TIME".PadRight(SPad)} {"URL".PadRight(SPad)} {"TITLE".PadRight(SPad)}");
 
-			foreach (var entry in historyEntries)
+			//foreach (var entry in historyEntries)
+			//{
+			//	Console.WriteLine($"{entry.EntryTime.ToShortDateString().PadRight(SPad)} {entry.Url.PadRight(SPad)} {entry.Title.PadRight(SPad)}");
+			//}
+
+			var downloadEntries = googleChromeReader.GetDownloadEntries();
+
+			Console.WriteLine($"{"URL".PadRight(70)} {"PATH".PadRight(70)} {"DOWNLOADED SIZE".PadRight(SPad)} {"TOTAL SIZE".PadRight(SPad)} {"STATE".PadRight(SPad)} {"START TIME".PadRight(25)} {"END TIME".PadRight(25)}");
+
+			foreach (var entry in downloadEntries)
 			{
-				Console.WriteLine($"{entry.EntryTime.ToShortDateString().PadRight(30)} {entry.Url.PadRight(30)} {entry.Title.PadRight(30)}");
+				Console.WriteLine($"{entry.Url.PadRight(70)} {entry.Path.PadRight(70)} {entry.DownloadedSizeKb.ToString().PadRight(SPad)} {entry.TotalSizeKb.ToString().PadRight(SPad)} {entry.State.ToString().PadRight(SPad)} {entry.StartTime.ToString().PadRight(25)} {entry.EndTime.ToString().PadRight(25)}");
 			}
 		}
 
@@ -66,14 +77,13 @@ namespace ClientApp
 		{
 			var googleDriveReader = new GoogleDriveReader.GoogleDriveReader(disk, userName);
 			var fileActions = googleDriveReader.GetEntries(GoogleDrive.Action.CREATE);
-
 			//var metadata = googleDriveReader.GetMetadata();
-			Console.WriteLine("FILENAME".PadRight(30) + "ACTION".PadRight(10) + "DIRECTION".PadRight(10) +
+			Console.WriteLine("FILENAME".PadRight(SPad) + "ACTION".PadRight(10) + "DIRECTION".PadRight(10) +
 							  "TIME".PadRight(25) + "PATH");
 
 			foreach (var log in fileActions)
 			{
-				Console.WriteLine(log.FileName.PadRight(30)
+				Console.WriteLine(log.FileName.PadRight(SPad)
 								  + log.Action.ToString().PadRight(10)
 								  + log.Direction.ToString().PadRight(10)
 								  + log.Date.ToString().PadRight(25)
