@@ -8,11 +8,12 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>ClientApp</RootNamespace>
     <AssemblyName>ClientApp</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -75,6 +76,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GoogleChromeReader\GoogleChromeReader.csproj">
+      <Project>{7DC71691-EE21-4E64-8E1F-E1FA463EF4A4}</Project>
+      <Name>GoogleChromeReader</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GoogleDriveReader\GoogleDriveReader.csproj">
       <Project>{9CF1F85F-149E-454D-AD1A-D9E2054DE67E}</Project>
       <Name>GoogleDriveReader</Name>
