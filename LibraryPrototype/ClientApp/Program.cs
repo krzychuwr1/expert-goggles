@@ -1,7 +1,10 @@
 ﻿using LibraryPrototype;
 using LibraryShared;
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using LibraryShared.Interfaces.Disk;
+using LibraryShared.Model;
 
 namespace ClientApp
 {
@@ -34,7 +37,9 @@ namespace ClientApp
 
 				//GoogleDriveTest(disk, userName);
 
-				GoogleChromeTest(disk, userName);
+				//GoogleChromeTest(disk, userName);
+
+				FirefoxTest(disk, userName);
 
 			}
 			catch (ArgumentException e)
@@ -51,26 +56,31 @@ namespace ClientApp
             Console.ReadLine();
         }
 
-		private static void GoogleChromeTest(LibraryShared.Interfaces.Disk.IDisk disk, string userName)
+	    private static void FirefoxTest(IDisk disk, string userName)
+	    {
+		    var firefoxReader = new FirefoxReader.FirefoxReader(disk, userName);
+
+		    var historyEntries = firefoxReader.GetHistoryEntries();
+
+			PrintHistoryEntries(historyEntries);
+	    }
+
+	    private static void GoogleChromeTest(LibraryShared.Interfaces.Disk.IDisk disk, string userName)
 		{
 			var googleChromeReader = new GoogleChromeReader.GoogleChromeReader(disk, userName);
+
 			var historyEntries = googleChromeReader.GetHistoryEntries();
 
-			//Console.WriteLine($"{"TIME".PadRight(SPad)} {"URL".PadRight(SPad)} {"TITLE".PadRight(SPad)}");
+			PrintHistoryEntries(historyEntries);
 
-			//foreach (var entry in historyEntries)
-			//{
-			//	Console.WriteLine($"{entry.EntryTime.ToShortDateString().PadRight(SPad)} {entry.Url.PadRight(SPad)} {entry.Title.PadRight(SPad)}");
-			//}
+			var downloadEntries = googleChromeReader.GetDownloadEntries();
 
-			//var downloadEntries = googleChromeReader.GetDownloadEntries();
+			Console.WriteLine($"{"URL".PadRight(70)} {"PATH".PadRight(70)} {"DOWNLOADED SIZE".PadRight(SPad)} {"TOTAL SIZE".PadRight(SPad)} {"STATE".PadRight(SPad)} {"START TIME".PadRight(25)} {"END TIME".PadRight(25)}");
 
-			//Console.WriteLine($"{"URL".PadRight(70)} {"PATH".PadRight(70)} {"DOWNLOADED SIZE".PadRight(SPad)} {"TOTAL SIZE".PadRight(SPad)} {"STATE".PadRight(SPad)} {"START TIME".PadRight(25)} {"END TIME".PadRight(25)}");
-
-			//foreach (var entry in downloadEntries)
-			//{
-			//	Console.WriteLine($"{entry.Url.PadRight(70)} {entry.Path.PadRight(70)} {entry.DownloadedSizeKb.ToString().PadRight(SPad)} {entry.TotalSizeKb.ToString().PadRight(SPad)} {entry.State.ToString().PadRight(SPad)} {entry.StartTime.ToString().PadRight(25)} {entry.EndTime.ToString().PadRight(25)}");
-			//}
+			foreach (var entry in downloadEntries)
+			{
+				Console.WriteLine($"{entry.Url.PadRight(70)} {entry.Path.PadRight(70)} {entry.DownloadedSizeKb.ToString().PadRight(SPad)} {entry.TotalSizeKb.ToString().PadRight(SPad)} {entry.State.ToString().PadRight(SPad)} {entry.StartTime.ToString().PadRight(25)} {entry.EndTime.ToString().PadRight(25)}");
+			}
 
 			var searchEntries = googleChromeReader.GetSearchTermEntries();
 
@@ -97,6 +107,16 @@ namespace ClientApp
 								  + log.Date.ToString().PadRight(25)
 								  + log.Path);
 			}
+		}
+
+	    private static void PrintHistoryEntries(IEnumerable<IHistoryEntry> entries)
+	    {
+			Console.WriteLine($"{"TIME".PadRight(25)} {"URL".PadRight(50)} {"TITLE".PadRight(50)}");
+
+		    foreach (var entry in entries)
+		    {
+			    Console.WriteLine($"{entry.EntryTime.ToString().PadRight(25)} {entry.Url.PadRight(50)} {entry.Title.PadRight(50)}");
+		    }
 		}
 	}
 }

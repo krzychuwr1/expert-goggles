@@ -76,6 +76,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FirefoxReader\FirefoxReader.csproj">
+      <Project>{55071C77-BA54-4F1A-9511-B5FE153D424C}</Project>
+      <Name>FirefoxReader</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GoogleChromeReader\GoogleChromeReader.csproj">
       <Project>{7DC71691-EE21-4E64-8E1F-E1FA463EF4A4}</Project>
       <Name>GoogleChromeReader</Name>

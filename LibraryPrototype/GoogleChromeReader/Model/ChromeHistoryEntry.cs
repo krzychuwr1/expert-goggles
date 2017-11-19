@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LibraryShared.Model;
 
 namespace GoogleChromeReader.Model
 {
-	public class ChromeHistoryEntry
+	public class ChromeHistoryEntry : IHistoryEntry
 	{
 		public DateTime EntryTime { get; }
 		public string Url { get; }

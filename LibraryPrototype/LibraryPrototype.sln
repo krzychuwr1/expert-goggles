@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sleuthkit-sharp", "sleuthki
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleChromeReader", "GoogleChromeReader\GoogleChromeReader.csproj", "{7DC71691-EE21-4E64-8E1F-E1FA463EF4A4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirefoxReader", "FirefoxReader\FirefoxReader.csproj", "{55071C77-BA54-4F1A-9511-B5FE153D424C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +99,18 @@ Global
 		{7DC71691-EE21-4E64-8E1F-E1FA463EF4A4}.Release|x64.Build.0 = Release|Any CPU
 		{7DC71691-EE21-4E64-8E1F-E1FA463EF4A4}.Release|x86.ActiveCfg = Release|Any CPU
 		{7DC71691-EE21-4E64-8E1F-E1FA463EF4A4}.Release|x86.Build.0 = Release|Any CPU
+		{55071C77-BA54-4F1A-9511-B5FE153D424C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55071C77-BA54-4F1A-9511-B5FE153D424C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55071C77-BA54-4F1A-9511-B5FE153D424C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{55071C77-BA54-4F1A-9511-B5FE153D424C}.Debug|x64.Build.0 = Debug|Any CPU
+		{55071C77-BA54-4F1A-9511-B5FE153D424C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{55071C77-BA54-4F1A-9511-B5FE153D424C}.Debug|x86.Build.0 = Debug|Any CPU
+		{55071C77-BA54-4F1A-9511-B5FE153D424C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55071C77-BA54-4F1A-9511-B5FE153D424C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55071C77-BA54-4F1A-9511-B5FE153D424C}.Release|x64.ActiveCfg = Release|Any CPU
+		{55071C77-BA54-4F1A-9511-B5FE153D424C}.Release|x64.Build.0 = Release|Any CPU
+		{55071C77-BA54-4F1A-9511-B5FE153D424C}.Release|x86.ActiveCfg = Release|Any CPU
+		{55071C77-BA54-4F1A-9511-B5FE153D424C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
