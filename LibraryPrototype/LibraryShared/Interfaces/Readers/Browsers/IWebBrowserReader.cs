@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using ExpertGoggles.Core.Model;
+using Expert.Goggles.Core.Model;
 
-namespace ExpertGoggles.Core.Interfaces.Readers.Browsers
+namespace Expert.Goggles.Core.Interfaces.Readers.Browsers
 {
 	public interface IBrowsingHistoryReader<out THistoryEntry> where THistoryEntry : IHistoryEntry
 	{

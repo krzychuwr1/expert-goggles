@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ExpertGoggles.Core.Model
+namespace Expert.Goggles.Core.Model
 {
 	public interface IHistoryEntry
 	{

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GoogleChromeReader.Model
+﻿namespace Expert.Goggles.Chrome.Model
 {
 	public enum EChromeDownloadState
 	{

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ExpertGoggles.Core.Exceptions
+namespace Expert.Goggles.Core.Exceptions
 {
     public class FileNotFoundException : Exception
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SkypeReader.Model
+namespace Expert.Goggles.Skype.Model
 {
     public class SkypeCallEntry
     {

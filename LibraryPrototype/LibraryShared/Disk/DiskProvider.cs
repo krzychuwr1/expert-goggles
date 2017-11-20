@@ -1,8 +1,8 @@
 ﻿using System.IO;
-using ExpertGoggles.Core.Interfaces.Disk;
+using Expert.Goggles.Core.Interfaces.Disk;
 using SleuthKit;
 
-namespace ExpertGoggles.Core.Disk
+namespace Expert.Goggles.Core.Disk
 {
     public class DiskProvider : IDiskProvider
     {

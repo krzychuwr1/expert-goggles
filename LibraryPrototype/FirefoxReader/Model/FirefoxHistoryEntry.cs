@@ -1,7 +1,7 @@
 ﻿using System;
-using ExpertGoggles.Core.Model;
+using Expert.Goggles.Core.Model;
 
-namespace ExpertGoggles.Firefox.Model
+namespace Expert.Goggles.Firefox.Model
 {
 	public class FirefoxHistoryEntry : IHistoryEntry
 	{

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ExpertGoggles.Firefox.Model
+namespace Expert.Goggles.Firefox.Model
 {
 	public class FirefoxBookmarkEntry
 	{

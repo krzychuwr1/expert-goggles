@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.SQLite;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using ExpertGoggles.Core.Interfaces.Disk;
-using ExpertGoggles.Core.Interfaces.Readers.Browsers;
-using GoogleChromeReader.Extensions;
-using GoogleChromeReader.Model;
+using Expert.Goggles.Chrome.Extensions;
+using Expert.Goggles.Chrome.Model;
+using Expert.Goggles.Core.Interfaces.Disk;
+using Expert.Goggles.Core.Interfaces.Readers.Browsers;
 
-namespace GoogleChromeReader
+namespace Expert.Goggles.Chrome
 {
 	public interface IGoogleChromeReader : IBrowsingHistoryReader<ChromeHistoryEntry>, IDownloadsReader<ChromeDownloadEntry>, ISearchTermsReader<ChromeSearchTermEntry>
 	{

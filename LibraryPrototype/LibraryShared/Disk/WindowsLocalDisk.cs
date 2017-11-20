@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using ExpertGoggles.Core.Interfaces.Disk;
+using Expert.Goggles.Core.Interfaces.Disk;
 
-namespace ExpertGoggles.Core.Disk
+namespace Expert.Goggles.Core.Disk
 {
 	public class WindowsLocalDisk : IDisk
 	{
@@ -32,6 +32,6 @@ namespace ExpertGoggles.Core.Disk
 		public IEnumerable<string> GetDirectoryFiles(string path) => new DirectoryInfo(AddLocalDiskPrefix(path)).GetFiles().Select(f => f.Name);
 		public IEnumerable<string> GetDirectorySubdirectories(string path) => new DirectoryInfo(AddLocalDiskPrefix(path)).GetDirectories().Select(f => f.Name);
 
-		private string AddLocalDiskPrefix(string path) => path.StartsWith(@"C:\") ? path : $@"C:\{path}";
+		private static string AddLocalDiskPrefix(string path) => path.StartsWith(@"C:\") ? path : $@"C:\{path}";
 	}
 }

@@ -1,6 +1,6 @@
-﻿using ExpertGoggles.Core.Model;
+﻿using Expert.Goggles.Core.Model;
 
-namespace ExpertGoggles.Core.Interfaces.Readers
+namespace Expert.Goggles.Core.Interfaces.Readers
 {
     public interface IMetadataReader<out TMetadataType> where TMetadataType : IMetadata 
     {

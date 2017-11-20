@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using ExpertGoggles.Core.Model;
+using Expert.Goggles.Core.Model;
 
-namespace SkypeReader.Model
+namespace Expert.Goggles.Skype.Model
 {
     public class SkypeMetadata : IMetadata
     {

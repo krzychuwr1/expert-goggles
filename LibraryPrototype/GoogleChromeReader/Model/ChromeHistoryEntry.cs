@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ExpertGoggles.Core.Model;
+using Expert.Goggles.Core.Model;
 
-namespace GoogleChromeReader.Model
+namespace Expert.Goggles.Chrome.Model
 {
 	public class ChromeHistoryEntry : IHistoryEntry
 	{

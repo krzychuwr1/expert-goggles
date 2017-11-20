@@ -1,4 +1,4 @@
-﻿namespace ExpertGoggles.Core.Interfaces.Disk
+﻿namespace Expert.Goggles.Core.Interfaces.Disk
 {
     public interface IDiskProvider
     {

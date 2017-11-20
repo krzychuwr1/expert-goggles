@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C9308DB6-46B4-43AB-BE83-0AFBD46CFEC4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Expert.Goggles.Core</RootNamespace>
+    <AssemblyName>Expert.Goggles.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="sleuthkit-sharp, Version=1.0.6.0, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\packages\sleuthkit-sharp.1.0.6\lib\net461\sleuthkit-sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Disk\DiskProvider.cs" />
+    <Compile Include="Exceptions\FileNotFoundException.cs" />
+    <Compile Include="Interfaces\Disk\IDiskProvider.cs" />
+    <Compile Include="Interfaces\Readers\Browsers\IBookmarksReader.cs" />
+    <Compile Include="Interfaces\Readers\Browsers\ICookiesReader.cs" />
+    <Compile Include="Interfaces\Readers\Browsers\IDownloadsReader.cs" />
+    <Compile Include="Interfaces\Readers\Browsers\ISearchTermsReader.cs" />
+    <Compile Include="Interfaces\Readers\Cloud\ICloudEntriesReader.cs" />
+    <Compile Include="Model\IMetadata.cs" />
+    <Compile Include="Interfaces\Readers\IMetadataReader.cs" />
+    <Compile Include="Disk\WindowsDiskImage.cs" />
+    <Compile Include="Extensions\FileUtils.cs" />
+    <Compile Include="Interfaces\Disk\IDisk.cs" />
+    <Compile Include="Interfaces\Readers\Browsers\IWebBrowserReader.cs" />
+    <Compile Include="Interfaces\Readers\Messengers\ICallsReader.cs" />
+    <Compile Include="Interfaces\Readers\Messengers\IContactsReader.cs" />
+    <Compile Include="Interfaces\Readers\Messengers\ITextMessegesReader.cs" />
+    <Compile Include="Model\IDownloadEntry.cs" />
+    <Compile Include="Model\IHistoryEntry.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Disk\WindowsLocalDisk.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ewf.net.dll" />
+    <Content Include="libewf.dll" />
+    <Content Include="libtsk4.dll" />
+    <Content Include="libtsk4.pdb" />
+    <Content Include="zlib.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

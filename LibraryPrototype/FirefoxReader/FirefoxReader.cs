@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Data.SQLite;
 using System.IO;
-using ExpertGoggles.Core.Interfaces.Disk;
-using ExpertGoggles.Core.Interfaces.Readers.Browsers;
-using ExpertGoggles.Firefox.Model;
-
-namespace ExpertGoggles.Firefox
+using Expert.Goggles.Core.Interfaces.Disk;
+using Expert.Goggles.Core.Interfaces.Readers.Browsers;
+using Expert.Goggles.Firefox.Model;
+namespace Expert.Goggles.Firefox
 {
 	public interface IFirefoxReader : IBrowsingHistoryReader<FirefoxHistoryEntry>, IBookmarksReader<FirefoxBookmarkEntry>, ICookiesReader<FirefoxCookieEntry>, IDownloadsReader<FirefoxDownloadEntry>
 	{

@@ -1,12 +1,13 @@
-﻿using LibraryPrototype;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using ExpertGoggles.Core.Disk;
-using ExpertGoggles.Core.Interfaces.Disk;
-using ExpertGoggles.Core.Model;
-using ExpertGoggles.Firefox;
-using SkypeReader;
+using Expert.Goggles.Chrome;
+using Expert.Goggles.Core.Disk;
+using Expert.Goggles.Core.Interfaces.Disk;
+using Expert.Goggles.Core.Model;
+using Expert.Goggles.Firefox;
+using Expert.Goggles.GoogleDrive;
+using Action = Expert.Goggles.GoogleDrive.Action;
 
 namespace ClientApp
 {
@@ -36,13 +37,13 @@ namespace ClientApp
 					userName = Console.ReadLine();
 				}
 
-                //GoogleDriveTest(disk, userName);
+                GoogleDriveTest(disk, userName);
 
-                //GoogleChromeTest(disk, userName);
-                var r = new SkypeReader.SkypeReader(disk, userName);
-				var test = r.GetMetadata();
-				var ce = r.GetMessagesEntries(test.Users.First()).ToList();
-				FirefoxTest(disk, userName);
+    //            //GoogleChromeTest(disk, userName);
+    //            var r = new SkypeReader.SkypeReader(disk, userName);
+				//var test = r.GetMetadata();
+				//var ce = r.GetMessagesEntries(test.Users.First()).ToList();
+				//FirefoxTest(disk, userName);
 
 			}
 			catch (ArgumentException e)
@@ -97,7 +98,7 @@ namespace ClientApp
 
 	    private static void GoogleChromeTest(IDisk disk, string userName)
 		{
-			var googleChromeReader = new GoogleChromeReader.GoogleChromeReader(disk, userName);
+			var googleChromeReader = new GoogleChromeReader(disk, userName);
 
 			var historyEntries = googleChromeReader.GetHistoryEntries();
 
@@ -123,8 +124,8 @@ namespace ClientApp
 
 		private static void GoogleDriveTest(IDisk disk, string userName)
 		{
-			var googleDriveReader = new GoogleDriveReader.GoogleDriveReader(disk, userName);
-			var fileActions = googleDriveReader.GetEntries(GoogleDrive.Action.CREATE);
+			var googleDriveReader = new GoogleDriveReader(disk, userName);
+			var fileActions = googleDriveReader.GetEntries(Action.CREATE);
 			//var metadata = googleDriveReader.GetMetadata();
 			Console.WriteLine("FILENAME".PadRight(SPad) + "ACTION".PadRight(10) + "DIRECTION".PadRight(10) +
 							  "TIME".PadRight(25) + "PATH");

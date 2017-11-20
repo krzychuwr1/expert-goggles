@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using ExpertGoggles.Core.Model;
+using Expert.Goggles.Core.Model;
 
-namespace GoogleDriveReader
+namespace Expert.Goggles.GoogleDrive
 {
     public class GoogleDriveMetadata : IMetadata
     {

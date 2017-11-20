@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GoogleChromeReader
+namespace Expert.Goggles.Chrome.Model
 {
 	public class ChromeSearchTermEntry
 	{

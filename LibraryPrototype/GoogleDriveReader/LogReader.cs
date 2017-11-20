@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
-using GoogleDrive;
-using Action = GoogleDrive.Action;
 
-namespace GoogleDriveReader
+namespace Expert.Goggles.GoogleDrive
 {
     public class LogReader
     {

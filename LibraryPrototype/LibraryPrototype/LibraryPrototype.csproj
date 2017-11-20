@@ -55,13 +55,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GoogleDriveReader\GoogleDriveReader.csproj">
+    <ProjectReference Include="..\GoogleDriveReader\ExpertGoggles.GoogleDrive.csproj">
       <Project>{9CF1F85F-149E-454D-AD1A-D9E2054DE67E}</Project>
-      <Name>GoogleDriveReader</Name>
+      <Name>ExpertGoggles.GoogleDrive</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LibraryShared\ExpertGoggles.Core.csproj">
+    <ProjectReference Include="..\LibraryShared\Expert.Goggles.Core.csproj">
       <Project>{C9308DB6-46B4-43AB-BE83-0AFBD46CFEC4}</Project>
-      <Name>ExpertGoggles.Core</Name>
+      <Name>Expert.Goggles.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Data.SQLite;
-using ExpertGoggles.Core.Interfaces.Disk;
-using ExpertGoggles.Core.Interfaces.Readers;
-using ExpertGoggles.Core.Interfaces.Readers.Messengers;
-using SkypeReader.Model;
+using Expert.Goggles.Core.Interfaces.Disk;
+using Expert.Goggles.Core.Interfaces.Readers;
+using Expert.Goggles.Core.Interfaces.Readers.Messengers;
+using Expert.Goggles.Skype.Model;
 
-namespace SkypeReader
+namespace Expert.Goggles.Skype
 {
     public interface ISkypeReader : IMetadataReader<SkypeMetadata>, ITextMessegesReader<SkypeTextMessageEntry>, IContactsReader<SkypeContactEntry>, ICallsReader<SkypeCallEntry>
     {

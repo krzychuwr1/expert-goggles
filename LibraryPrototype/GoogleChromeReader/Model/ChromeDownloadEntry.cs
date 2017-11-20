@@ -1,7 +1,7 @@
 ﻿using System;
-using ExpertGoggles.Core.Model;
+using Expert.Goggles.Core.Model;
 
-namespace GoogleChromeReader.Model
+namespace Expert.Goggles.Chrome.Model
 {
 	public class ChromeDownloadEntry : IDownloadEntry
 	{

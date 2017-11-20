@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.SQLite;
-using System.IO;
 using System.Linq;
 using System.Text;
-using ExpertGoggles.Core.Interfaces.Disk;
-using ExpertGoggles.Core.Interfaces.Readers;
-using ExpertGoggles.Core.Interfaces.Readers.Cloud;
-using GoogleDrive;
-using GoogleDrive.Exceptions;
-using Microsoft.Win32;
-using Action = GoogleDrive.Action;
+using Expert.Goggles.Core.Interfaces.Disk;
+using Expert.Goggles.Core.Interfaces.Readers;
+using Expert.Goggles.Core.Interfaces.Readers.Cloud;
 
-namespace GoogleDriveReader
+namespace Expert.Goggles.GoogleDrive
 {
     public interface IGoogleDriveReader : IMetadataReader<GoogleDriveMetadata>, ICloudEntriesReader<FileActionEntry>
     {

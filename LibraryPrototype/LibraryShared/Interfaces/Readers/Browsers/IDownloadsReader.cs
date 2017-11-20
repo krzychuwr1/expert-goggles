@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using ExpertGoggles.Core.Model;
+using Expert.Goggles.Core.Model;
 
-namespace ExpertGoggles.Core.Interfaces.Readers.Browsers
+namespace Expert.Goggles.Core.Interfaces.Readers.Browsers
 {
 	public interface IDownloadsReader<out TDownloadEntry> where TDownloadEntry : IDownloadEntry
 	{
