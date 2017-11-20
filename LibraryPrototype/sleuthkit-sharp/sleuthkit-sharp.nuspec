@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>SafeSocietyGroup</authors>
+    <owners>SafeSocietyGroup</owners>
+    <licenseUrl>https://github.com/SaferSocietyGroup/SleuthkitWrapper/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/SaferSocietyGroup/SleuthkitWrapper</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>test</tags>
+  </metadata>
+</package>

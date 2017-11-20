@@ -177,7 +177,6 @@
     <None Include="libtsk4.lib">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="NuSpec\SleuthkitSharp.nuspec" />
     <None Include="zlib.lib">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
