@@ -69,13 +69,6 @@
     <Compile Include="Disk\WindowsLocalDisk.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ewf.net.dll" />
-    <Content Include="libewf.dll" />
-    <Content Include="libtsk4.dll" />
-    <Content Include="libtsk4.pdb" />
-    <Content Include="zlib.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Expert.Goggles.Core.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
