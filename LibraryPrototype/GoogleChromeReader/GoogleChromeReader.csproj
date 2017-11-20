@@ -55,9 +55,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LibraryShared\LibraryShared.csproj">
+    <ProjectReference Include="..\LibraryShared\ExpertGoggles.Core.csproj">
       <Project>{c9308db6-46b4-43ab-be83-0afbd46cfec4}</Project>
-      <Name>LibraryShared</Name>
+      <Name>ExpertGoggles.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

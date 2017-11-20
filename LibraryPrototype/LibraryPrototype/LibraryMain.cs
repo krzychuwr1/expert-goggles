@@ -1,5 +1,4 @@
 ﻿using GoogleDrive;
-using LibraryShared;
 using Ninject;
 using Ninject.Syntax;
 using System;
@@ -7,8 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ExpertGoggles.Core.Interfaces.Disk;
 using GoogleDriveReader;
-using LibraryShared.Interfaces.Disk;
 using Ninject.Parameters;
 
 namespace LibraryPrototype

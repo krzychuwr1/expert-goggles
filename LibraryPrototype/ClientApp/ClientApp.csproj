@@ -76,9 +76,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FirefoxReader\FirefoxReader.csproj">
+    <ProjectReference Include="..\FirefoxReader\ExpertGoggles.Firefox.csproj">
       <Project>{55071C77-BA54-4F1A-9511-B5FE153D424C}</Project>
-      <Name>FirefoxReader</Name>
+      <Name>ExpertGoggles.Firefox</Name>
     </ProjectReference>
     <ProjectReference Include="..\GoogleChromeReader\GoogleChromeReader.csproj">
       <Project>{7DC71691-EE21-4E64-8E1F-E1FA463EF4A4}</Project>
@@ -92,9 +92,9 @@
       <Project>{AA66E7C1-0F0D-4061-9E0E-AAF0D830D4C4}</Project>
       <Name>LibraryPrototype</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LibraryShared\LibraryShared.csproj">
+    <ProjectReference Include="..\LibraryShared\ExpertGoggles.Core.csproj">
       <Project>{C9308DB6-46B4-43AB-BE83-0AFBD46CFEC4}</Project>
-      <Name>LibraryShared</Name>
+      <Name>ExpertGoggles.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\SkypeReader\SkypeReader.csproj">
       <Project>{EEA71C8C-11BC-45D2-A4C0-B4CEDC4942EF}</Project>

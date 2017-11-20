@@ -1,13 +1,13 @@
-﻿using LibraryShared.Interfaces.Readers;
-using LibraryShared.Interfaces.Readers.Messengers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SQLite;
+using ExpertGoggles.Core.Interfaces.Disk;
+using ExpertGoggles.Core.Interfaces.Readers;
+using ExpertGoggles.Core.Interfaces.Readers.Messengers;
 using SkypeReader.Model;
-using LibraryShared.Interfaces.Disk;
 
 namespace SkypeReader
 {

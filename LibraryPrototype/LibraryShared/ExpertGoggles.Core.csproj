@@ -7,8 +7,8 @@
     <ProjectGuid>{C9308DB6-46B4-43AB-BE83-0AFBD46CFEC4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LibraryShared</RootNamespace>
-    <AssemblyName>LibraryShared</AssemblyName>
+    <RootNamespace>ExpertGoggles.Core</RootNamespace>
+    <AssemblyName>ExpertGoggles.Core</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

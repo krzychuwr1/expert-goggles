@@ -4,12 +4,11 @@ using System.Data.SQLite;
 using System.IO;
 using System.Linq;
 using System.Text;
+using ExpertGoggles.Core.Interfaces.Disk;
+using ExpertGoggles.Core.Interfaces.Readers;
+using ExpertGoggles.Core.Interfaces.Readers.Cloud;
 using GoogleDrive;
 using GoogleDrive.Exceptions;
-using LibraryShared;
-using LibraryShared.Interfaces.Disk;
-using LibraryShared.Interfaces.Readers;
-using LibraryShared.Interfaces.Readers.Cloud;
 using Microsoft.Win32;
 using Action = GoogleDrive.Action;
 

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using LibraryShared.Model;
+using ExpertGoggles.Core.Model;
 
 namespace GoogleDriveReader
 {

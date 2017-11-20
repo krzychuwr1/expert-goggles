@@ -2,7 +2,7 @@
 using System.IO;
 using System.Reflection;
 
-namespace LibraryShared.Extensions
+namespace ExpertGoggles.Core.Extensions
 {
     public static class FileUtils
     {

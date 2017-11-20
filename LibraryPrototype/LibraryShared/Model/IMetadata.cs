@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace LibraryShared.Model
+namespace ExpertGoggles.Core.Model
 {
 	public interface IMetadata
 	{

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace LibraryShared.Interfaces.Readers.Cloud
+namespace ExpertGoggles.Core.Interfaces.Readers.Cloud
 {
 	public interface ICloudEntriesReader<out TEntryType>
 	{

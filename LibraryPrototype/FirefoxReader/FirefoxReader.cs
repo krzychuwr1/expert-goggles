@@ -2,14 +2,11 @@
 using System.Collections.Generic;
 using System.Data.SQLite;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FirefoxReader.Model;
-using LibraryShared.Interfaces.Disk;
-using LibraryShared.Interfaces.Readers.Browsers;
+using ExpertGoggles.Core.Interfaces.Disk;
+using ExpertGoggles.Core.Interfaces.Readers.Browsers;
+using ExpertGoggles.Firefox.Model;
 
-namespace FirefoxReader
+namespace ExpertGoggles.Firefox
 {
 	public interface IFirefoxReader : IBrowsingHistoryReader<FirefoxHistoryEntry>, IBookmarksReader<FirefoxBookmarkEntry>, ICookiesReader<FirefoxCookieEntry>, IDownloadsReader<FirefoxDownloadEntry>
 	{

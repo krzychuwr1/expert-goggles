@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using LibraryShared.Model;
+﻿using ExpertGoggles.Core.Model;
 
-namespace LibraryShared.Interfaces.Readers
+namespace ExpertGoggles.Core.Interfaces.Readers
 {
     public interface IMetadataReader<out TMetadataType> where TMetadataType : IMetadata 
     {

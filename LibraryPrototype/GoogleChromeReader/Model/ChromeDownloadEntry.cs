@@ -1,5 +1,5 @@
 ﻿using System;
-using LibraryShared.Model;
+using ExpertGoggles.Core.Model;
 
 namespace GoogleChromeReader.Model
 {

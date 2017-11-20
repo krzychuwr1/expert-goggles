@@ -4,10 +4,10 @@ using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ExpertGoggles.Core.Interfaces.Disk;
+using ExpertGoggles.Core.Interfaces.Readers.Browsers;
 using GoogleChromeReader.Extensions;
 using GoogleChromeReader.Model;
-using LibraryShared.Interfaces.Disk;
-using LibraryShared.Interfaces.Readers.Browsers;
 
 namespace GoogleChromeReader
 {

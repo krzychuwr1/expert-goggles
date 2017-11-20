@@ -1,12 +1,8 @@
-﻿using SleuthKit;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LibraryShared.Disk;
-using LibraryShared.Interfaces.Disk;
+﻿using System.IO;
+using ExpertGoggles.Core.Interfaces.Disk;
+using SleuthKit;
 
-namespace LibraryShared
+namespace ExpertGoggles.Core.Disk
 {
     public class DiskProvider : IDiskProvider
     {

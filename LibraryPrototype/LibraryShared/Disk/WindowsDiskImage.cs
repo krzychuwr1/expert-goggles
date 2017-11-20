@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using LibraryShared.Extensions;
-using LibraryShared.Interfaces.Disk;
+using ExpertGoggles.Core.Extensions;
+using ExpertGoggles.Core.Interfaces.Disk;
 using SleuthKit;
 using SleuthKit.Structs;
 
-namespace LibraryShared.Disk
+namespace ExpertGoggles.Core.Disk
 {
     public class WindowsDiskImage : IDisk
     {

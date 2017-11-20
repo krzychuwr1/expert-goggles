@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>Krzysztof Wrona, Michał Dzióbek</authors>
+    <owners>Krzysztof Wrona, Michał Dzióbek</owners>
+    <licenseUrl>https://github.com/krzychuwr1/expert-goggles</licenseUrl>
+    <projectUrl>https://github.com/krzychuwr1/expert-goggles</projectUrl>
+    <iconUrl>https://github.com/krzychuwr1/expert-goggles</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>test</description>
+    <releaseNotes>Readers.</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>Test</tags>
+  </metadata>
+</package>

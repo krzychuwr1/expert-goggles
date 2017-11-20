@@ -1,10 +1,11 @@
 ﻿using LibraryPrototype;
-using LibraryShared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using LibraryShared.Interfaces.Disk;
-using LibraryShared.Model;
+using ExpertGoggles.Core.Disk;
+using ExpertGoggles.Core.Interfaces.Disk;
+using ExpertGoggles.Core.Model;
+using ExpertGoggles.Firefox;
 using SkypeReader;
 
 namespace ClientApp
@@ -60,7 +61,7 @@ namespace ClientApp
 
 	    private static void FirefoxTest(IDisk disk, string userName)
 	    {
-		    var firefoxReader = new FirefoxReader.FirefoxReader(disk, userName);
+		    var firefoxReader = new FirefoxReader(disk, userName);
 
 		    var historyEntries = firefoxReader.GetHistoryEntries();
 
@@ -94,7 +95,7 @@ namespace ClientApp
 		    }
 	    }
 
-	    private static void GoogleChromeTest(LibraryShared.Interfaces.Disk.IDisk disk, string userName)
+	    private static void GoogleChromeTest(IDisk disk, string userName)
 		{
 			var googleChromeReader = new GoogleChromeReader.GoogleChromeReader(disk, userName);
 
@@ -120,7 +121,7 @@ namespace ClientApp
 			}
 		}
 
-		private static void GoogleDriveTest(LibraryShared.Interfaces.Disk.IDisk disk, string userName)
+		private static void GoogleDriveTest(IDisk disk, string userName)
 		{
 			var googleDriveReader = new GoogleDriveReader.GoogleDriveReader(disk, userName);
 			var fileActions = googleDriveReader.GetEntries(GoogleDrive.Action.CREATE);

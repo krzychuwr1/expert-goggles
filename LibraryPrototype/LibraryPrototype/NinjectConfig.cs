@@ -1,13 +1,13 @@
 ﻿using GoogleDrive;
-using LibraryShared;
 using Ninject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ExpertGoggles.Core.Disk;
+using ExpertGoggles.Core.Interfaces.Disk;
 using GoogleDriveReader;
-using LibraryShared.Interfaces.Disk;
 
 namespace LibraryPrototype
 {

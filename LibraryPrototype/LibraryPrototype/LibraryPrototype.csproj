@@ -59,9 +59,9 @@
       <Project>{9CF1F85F-149E-454D-AD1A-D9E2054DE67E}</Project>
       <Name>GoogleDriveReader</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LibraryShared\LibraryShared.csproj">
+    <ProjectReference Include="..\LibraryShared\ExpertGoggles.Core.csproj">
       <Project>{C9308DB6-46B4-43AB-BE83-0AFBD46CFEC4}</Project>
-      <Name>LibraryShared</Name>
+      <Name>ExpertGoggles.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

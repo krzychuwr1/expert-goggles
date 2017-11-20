@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace LibraryShared.Interfaces.Disk
+namespace ExpertGoggles.Core.Interfaces.Disk
 {
 	public interface IDisk
 	{

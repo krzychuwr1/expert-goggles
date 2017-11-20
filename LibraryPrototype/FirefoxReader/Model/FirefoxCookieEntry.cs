@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace FirefoxReader.Model
+namespace ExpertGoggles.Firefox.Model
 {
 	public class FirefoxCookieEntry
 	{

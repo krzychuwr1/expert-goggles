@@ -1,7 +1,7 @@
 ﻿using System;
-using LibraryShared.Model;
+using ExpertGoggles.Core.Model;
 
-namespace FirefoxReader.Model
+namespace ExpertGoggles.Firefox.Model
 {
 	public class FirefoxDownloadEntry : IDownloadEntry
 	{

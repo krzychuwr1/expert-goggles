@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using LibraryShared.Interfaces.Disk;
+using ExpertGoggles.Core.Interfaces.Disk;
 
-namespace LibraryShared.Disk
+namespace ExpertGoggles.Core.Disk
 {
 	public class WindowsLocalDisk : IDisk
 	{

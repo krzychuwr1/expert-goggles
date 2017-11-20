@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LibraryShared.Model;
+﻿using System.Collections.Generic;
+using ExpertGoggles.Core.Model;
 
-namespace LibraryShared.Interfaces.Readers.Browsers
+namespace ExpertGoggles.Core.Interfaces.Readers.Browsers
 {
 	public interface IDownloadsReader<out TDownloadEntry> where TDownloadEntry : IDownloadEntry
 	{

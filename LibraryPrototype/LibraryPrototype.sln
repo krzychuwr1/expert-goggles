@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2002
+VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryPrototype", "LibraryPrototype\LibraryPrototype.csproj", "{AA66E7C1-0F0D-4061-9E0E-AAF0D830D4C4}"
 EndProject
@@ -9,13 +9,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientApp", "ClientApp\Clie
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleDriveReader", "GoogleDriveReader\GoogleDriveReader.csproj", "{9CF1F85F-149E-454D-AD1A-D9E2054DE67E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryShared", "LibraryShared\LibraryShared.csproj", "{C9308DB6-46B4-43AB-BE83-0AFBD46CFEC4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpertGoggles.Core", "LibraryShared\ExpertGoggles.Core.csproj", "{C9308DB6-46B4-43AB-BE83-0AFBD46CFEC4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sleuthkit-sharp", "sleuthkit-sharp\sleuthkit-sharp.csproj", "{828A2D64-EFAD-496C-A369-7C8658AE4FFA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleChromeReader", "GoogleChromeReader\GoogleChromeReader.csproj", "{7DC71691-EE21-4E64-8E1F-E1FA463EF4A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirefoxReader", "FirefoxReader\FirefoxReader.csproj", "{55071C77-BA54-4F1A-9511-B5FE153D424C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpertGoggles.Firefox", "FirefoxReader\ExpertGoggles.Firefox.csproj", "{55071C77-BA54-4F1A-9511-B5FE153D424C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkypeReader", "SkypeReader\SkypeReader.csproj", "{EEA71C8C-11BC-45D2-A4C0-B4CEDC4942EF}"
 EndProject
