@@ -5,7 +5,7 @@
     <version>$version$</version>
     <title>$title$</title>
     <authors>SafeSocietyGroup</authors>
-    <owners>SafeSocietyGroup</owners>
+    <owners>kwrona</owners>
     <licenseUrl>https://github.com/SaferSocietyGroup/SleuthkitWrapper/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/SaferSocietyGroup/SleuthkitWrapper</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>

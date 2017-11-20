@@ -5,7 +5,7 @@
     <version>$version$</version>
     <title>$title$</title>
     <authors>Krzysztof Wrona, Michał Dzióbek</authors>
-    <owners>Krzysztof Wrona, Michał Dzióbek</owners>
+    <owners>kwrona</owners>
     <licenseUrl>https://github.com/krzychuwr1/expert-goggles/blob/dev/LICENSE</licenseUrl>
     <projectUrl>https://github.com/krzychuwr1/expert-goggles</projectUrl>
     <iconUrl>https://image.ibb.co/eCGP8R/goggles.png</iconUrl>
