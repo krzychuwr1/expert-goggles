@@ -29,6 +29,6 @@ namespace LibraryShared.Disk
 
 		public string GetLocalFilePath(string path) => AddLocalDiskPrefix(path);
 
-		private string AddLocalDiskPrefix(string path) => path.StartsWith(@"C:\\") ? path : $@"C:\\{path}";
+		private string AddLocalDiskPrefix(string path) => path.StartsWith(@"C:\") ? path : $@"C:\{path}";
 	}
 }

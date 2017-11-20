@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using LibraryShared.Interfaces.Disk;
 using LibraryShared.Model;
+using SkypeReader;
 
 namespace ClientApp
 {
@@ -15,7 +16,6 @@ namespace ClientApp
         static void Main(string[] args)
         {
             Console.WriteLine("Provide disk image location: ");
-
             var path = Console.ReadLine();
 	        try
 			{
@@ -35,10 +35,11 @@ namespace ClientApp
 					userName = Console.ReadLine();
 				}
 
-				//GoogleDriveTest(disk, userName);
+                //GoogleDriveTest(disk, userName);
 
-				//GoogleChromeTest(disk, userName);
-
+                //GoogleChromeTest(disk, userName);
+                var r = new SkypeReader.SkypeReader(disk, userName);
+                var ce = r.GetMessegesEntries().ToList();
 				FirefoxTest(disk, userName);
 
 			}

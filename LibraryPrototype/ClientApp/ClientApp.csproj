@@ -96,6 +96,10 @@
       <Project>{C9308DB6-46B4-43AB-BE83-0AFBD46CFEC4}</Project>
       <Name>LibraryShared</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SkypeReader\SkypeReader.csproj">
+      <Project>{EEA71C8C-11BC-45D2-A4C0-B4CEDC4942EF}</Project>
+      <Name>SkypeReader</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.105.1\build\net451\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.105.1\build\net451\System.Data.SQLite.Core.targets')" />

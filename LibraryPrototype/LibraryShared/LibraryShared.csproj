@@ -56,6 +56,9 @@
     <Compile Include="Extensions\FileUtils.cs" />
     <Compile Include="Interfaces\Disk\IDisk.cs" />
     <Compile Include="Interfaces\Readers\Browsers\IWebBrowserReader.cs" />
+    <Compile Include="Interfaces\Readers\Messengers\ICallsReader.cs" />
+    <Compile Include="Interfaces\Readers\Messengers\IContactsReader.cs" />
+    <Compile Include="Interfaces\Readers\Messengers\ITextMessegesReader.cs" />
     <Compile Include="Model\IDownloadEntry.cs" />
     <Compile Include="Model\IHistoryEntry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -101,5 +104,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
