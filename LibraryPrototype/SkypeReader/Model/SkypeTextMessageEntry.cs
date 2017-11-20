@@ -2,7 +2,7 @@
 
 namespace SkypeReader.Model
 {
-    public class SkypeTextMessegeEntry
+    public class SkypeTextMessageEntry
     {
         public string Chatname { get; set; }
         public string ContentXml { get; set; }

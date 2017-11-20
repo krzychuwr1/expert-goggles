@@ -35,10 +35,7 @@ namespace LibraryShared.Disk
             return filePaths;
         }
 
-        private WalkReturnEnum FindFiles_DirectoryWalkCallback(
-        ref TSK_FS_FILE file,
-        string directoryPath,
-        IntPtr dataPtr)
+        private WalkReturnEnum FindFiles_DirectoryWalkCallback(ref TSK_FS_FILE file, string directoryPath, IntPtr dataPtr)
         {
             filePaths.Add(string.Format("{0}{1}", directoryPath, file.Name));
             return WalkReturnEnum.Continue;
@@ -93,5 +90,23 @@ namespace LibraryShared.Disk
                 return fileStream.SaveAsFile();
             }
         }
+
+	    public IEnumerable<string> GetDirectoryFiles(string path)
+	    {
+		    using (FileSystem fileSystem = diskImage.OpenFileSystem())
+		    {
+			    var dir = fileSystem.OpenDirectory(path);
+			    return dir.Files.Select(e => e.FileStruct.Name?.GetName());
+		    }
+	    }
+
+	    public IEnumerable<string> GetDirectorySubdirectories(string path)
+	    {
+		    using (FileSystem fileSystem = diskImage.OpenFileSystem())
+		    {
+			    var dir = fileSystem.OpenDirectory(path);
+			    return dir.Directories.Select(e => e.Name);
+		    }
+		}
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using LibraryShared.Interfaces.Disk;
 
 namespace LibraryShared.Disk
@@ -28,6 +29,8 @@ namespace LibraryShared.Disk
 		public Stream GetFile(string path) => File.OpenRead(AddLocalDiskPrefix(path));
 
 		public string GetLocalFilePath(string path) => AddLocalDiskPrefix(path);
+		public IEnumerable<string> GetDirectoryFiles(string path) => new DirectoryInfo(AddLocalDiskPrefix(path)).GetFiles().Select(f => f.Name);
+		public IEnumerable<string> GetDirectorySubdirectories(string path) => new DirectoryInfo(AddLocalDiskPrefix(path)).GetDirectories().Select(f => f.Name);
 
 		private string AddLocalDiskPrefix(string path) => path.StartsWith(@"C:\") ? path : $@"C:\{path}";
 	}

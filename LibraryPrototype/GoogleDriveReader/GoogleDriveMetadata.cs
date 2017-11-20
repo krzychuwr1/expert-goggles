@@ -1,13 +1,15 @@
 ﻿using System.Collections.Generic;
+using LibraryShared.Model;
 
-namespace GoogleDrive
+namespace GoogleDriveReader
 {
-    public class GoogleDriveMetadata
+    public class GoogleDriveMetadata : IMetadata
     {
         public string UserEmail { get; set; }
 
         public string AppVersion { get; set; }
 
         private List<string> filenames = new List<string>();
+	    public IEnumerable<string> Users { get; }
     }
 }

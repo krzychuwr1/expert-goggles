@@ -39,7 +39,8 @@ namespace ClientApp
 
                 //GoogleChromeTest(disk, userName);
                 var r = new SkypeReader.SkypeReader(disk, userName);
-                var ce = r.GetMessegesEntries().ToList();
+				var test = r.GetMetadata();
+				var ce = r.GetMessagesEntries(test.Users.First()).ToList();
 				FirefoxTest(disk, userName);
 
 			}

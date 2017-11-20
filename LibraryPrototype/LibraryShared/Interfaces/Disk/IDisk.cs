@@ -9,5 +9,7 @@ namespace LibraryShared.Interfaces.Disk
 		IEnumerable<string> GetAllUsers();
 		Stream GetFile(string path);
         string GetLocalFilePath(string path);
+		IEnumerable<string> GetDirectoryFiles(string path);
+		IEnumerable<string> GetDirectorySubdirectories(string path);
 	}
 }

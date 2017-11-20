@@ -11,7 +11,7 @@ using LibraryShared.Interfaces.Disk;
 
 namespace SkypeReader
 {
-    public interface ISkypeReader : IMetadataReader<SkypeMetadata>, ITextMessegesReader<SkypeTextMessegeEntry>, IContactsReader<SkypeContactEntry>, ICallsReader<SkypeCallEntry>
+    public interface ISkypeReader : IMetadataReader<SkypeMetadata>, ITextMessegesReader<SkypeTextMessageEntry>, IContactsReader<SkypeContactEntry>, ICallsReader<SkypeCallEntry>
     {
 
     }
@@ -19,19 +19,20 @@ namespace SkypeReader
     {
         private readonly IDisk _disk;
         private readonly string _userName;
-        private string _skypeUserName = "michaeldzo";
-
+	    
         public SkypeReader(IDisk disk, string userName)
         {
             _disk = disk;
             _userName = userName;
         }
 
-        private string HistoryDbPath => _disk.GetLocalFilePath($@"Users\{_userName}\AppData\Local\Packages\Microsoft.SkypeApp_kzf8qxf38zg5c\LocalState\{_skypeUserName}\main.db");
+		private string MainFolderPath => $@"Users\{_userName}\AppData\Local\Packages\Microsoft.SkypeApp_kzf8qxf38zg5c\LocalState";
 
-        public IEnumerable<SkypeCallEntry> GetCallEntries()
+        private string GetDbPath(string skypeUserName) => _disk.GetLocalFilePath($@"{MainFolderPath}\{skypeUserName}\main.db");
+
+        public IEnumerable<SkypeCallEntry> GetCallEntries(string skypeUsername)
         {
-            using (var conn = new SQLiteConnection($"Data Source={HistoryDbPath}"))
+            using (var conn = new SQLiteConnection($"Data Source={GetDbPath(skypeUsername)}"))
             {
                 conn.Open();
                 string sql = "select * from calls";
@@ -52,15 +53,14 @@ namespace SkypeReader
             }
         }
 
-        public IEnumerable<SkypeContactEntry> GetContactEntries()
+        public IEnumerable<SkypeContactEntry> GetContactEntries(string skypeUsername)
         {
-            using (var conn = new SQLiteConnection($"Data Source={HistoryDbPath}"))
+            using (var conn = new SQLiteConnection($"Data Source={GetDbPath(skypeUsername)}"))
             {
                 conn.Open();
                 string sql = "select * from contacts";
                 SQLiteCommand command = new SQLiteCommand(sql, conn);
                 SQLiteDataReader reader = command.ExecuteReader();
-                StringBuilder builder = new StringBuilder();
                 while (reader.Read())
                 {
                     yield return new SkypeContactEntry
@@ -81,18 +81,17 @@ namespace SkypeReader
             }
         }
 
-        public IEnumerable<SkypeTextMessegeEntry> GetMessegesEntries()
+        public IEnumerable<SkypeTextMessageEntry> GetMessagesEntries(string skypeUsername)
         {
-            using (var conn = new SQLiteConnection($"Data Source={HistoryDbPath}"))
+            using (var conn = new SQLiteConnection($"Data Source={GetDbPath(skypeUsername)}"))
             {
                 conn.Open();
                 string sql = "select * from messages";
                 SQLiteCommand command = new SQLiteCommand(sql, conn);
                 SQLiteDataReader reader = command.ExecuteReader();
-                StringBuilder builder = new StringBuilder();
                 while (reader.Read())
                 {
-                    yield return new SkypeTextMessegeEntry
+                    yield return new SkypeTextMessageEntry
                     {
                         AuthorDisplayName = reader["from_dispname"] as string,
                         AuthorSkypeName = reader["author"] as string,
@@ -107,7 +106,9 @@ namespace SkypeReader
 
         public SkypeMetadata GetMetadata()
         {
-            throw new NotImplementedException();
+	        return new SkypeMetadata(MainFolderPath, _disk.GetDirectorySubdirectories(MainFolderPath).Where(p => !_notUserNamesFolders.Contains(p)));
         }
+
+	    private readonly string[] _notUserNamesFolders = {"coexistence", "DataRv", "DiagOutputDir", "logs", "SkypeRT", "Tracing"};
     }
 }

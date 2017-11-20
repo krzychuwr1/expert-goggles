@@ -8,6 +8,6 @@ namespace LibraryShared.Interfaces.Readers.Messengers
 {
     public interface ITextMessegesReader<out TMessegesEntry>
     {
-        IEnumerable<TMessegesEntry> GetMessegesEntries();
+        IEnumerable<TMessegesEntry> GetMessagesEntries(string appUserName);
     }
 }

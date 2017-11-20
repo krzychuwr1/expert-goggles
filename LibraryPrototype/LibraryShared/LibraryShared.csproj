@@ -51,6 +51,7 @@
     <Compile Include="Interfaces\Readers\Browsers\IDownloadsReader.cs" />
     <Compile Include="Interfaces\Readers\Browsers\ISearchTermsReader.cs" />
     <Compile Include="Interfaces\Readers\Cloud\ICloudEntriesReader.cs" />
+    <Compile Include="Model\IMetadata.cs" />
     <Compile Include="Interfaces\Readers\IMetadataReader.cs" />
     <Compile Include="Disk\WindowsDiskImage.cs" />
     <Compile Include="Extensions\FileUtils.cs" />

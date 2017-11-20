@@ -8,6 +8,6 @@ namespace LibraryShared.Interfaces.Readers.Messengers
 {
     public interface ICallsReader<out TCallEntry>
     {
-        IEnumerable<TCallEntry> GetCallEntries();
+        IEnumerable<TCallEntry> GetCallEntries(string appUsername);
     }
 }

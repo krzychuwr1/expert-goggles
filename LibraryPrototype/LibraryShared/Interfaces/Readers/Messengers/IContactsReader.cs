@@ -8,6 +8,6 @@ namespace LibraryShared.Interfaces.Readers.Messengers
 {
     public interface IContactsReader<out TContactEntry>
     {
-        IEnumerable<TContactEntry> GetContactEntries();
+        IEnumerable<TContactEntry> GetContactEntries(string appUserName);
     }
 }

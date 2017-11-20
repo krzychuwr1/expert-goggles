@@ -54,7 +54,7 @@
   <ItemGroup>
     <Compile Include="Model\SkypeCallEntry.cs" />
     <Compile Include="Model\SkypeContactEntry.cs" />
-    <Compile Include="Model\SkypeTextMessegeEntry.cs" />
+    <Compile Include="Model\SkypeTextMessageEntry.cs" />
     <Compile Include="SkypeReader.cs" />
     <Compile Include="Model\SkypeMetadata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
