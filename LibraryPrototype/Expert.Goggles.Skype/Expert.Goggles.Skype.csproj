@@ -60,7 +60,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LibraryShared\Expert.Goggles.Core.csproj">
+    <ProjectReference Include="..\Expert.Goggles.Core\Expert.Goggles.Core.csproj">
       <Project>{C9308DB6-46B4-43AB-BE83-0AFBD46CFEC4}</Project>
       <Name>Expert.Goggles.Core</Name>
     </ProjectReference>

@@ -3,19 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientApp", "ClientApp\ClientApp.csproj", "{A4F8A50F-8080-4B3C-BB57-A2566D664297}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Expert.Goggles.GoogleDrive", "Expert.Goggles.GoogleDrive\Expert.Goggles.GoogleDrive.csproj", "{9CF1F85F-149E-454D-AD1A-D9E2054DE67E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Expert.Goggles.GoogleDrive", "GoogleDriveReader\Expert.Goggles.GoogleDrive.csproj", "{9CF1F85F-149E-454D-AD1A-D9E2054DE67E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Expert.Goggles.Core", "LibraryShared\Expert.Goggles.Core.csproj", "{C9308DB6-46B4-43AB-BE83-0AFBD46CFEC4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Expert.Goggles.Core", "Expert.Goggles.Core\Expert.Goggles.Core.csproj", "{C9308DB6-46B4-43AB-BE83-0AFBD46CFEC4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sleuthkit-sharp", "sleuthkit-sharp\sleuthkit-sharp.csproj", "{828A2D64-EFAD-496C-A369-7C8658AE4FFA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Expert.Goggles.Chrome", "GoogleChromeReader\Expert.Goggles.Chrome.csproj", "{7DC71691-EE21-4E64-8E1F-E1FA463EF4A4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Expert.Goggles.Chrome", "Expert.Goggles.Chrome\Expert.Goggles.Chrome.csproj", "{7DC71691-EE21-4E64-8E1F-E1FA463EF4A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Expert.Goggles.Firefox", "FirefoxReader\Expert.Goggles.Firefox.csproj", "{55071C77-BA54-4F1A-9511-B5FE153D424C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Expert.Goggles.Firefox", "Expert.Goggles.Firefox\Expert.Goggles.Firefox.csproj", "{55071C77-BA54-4F1A-9511-B5FE153D424C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Expert.Goggles.Skype", "SkypeReader\Expert.Goggles.Skype.csproj", "{EEA71C8C-11BC-45D2-A4C0-B4CEDC4942EF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Expert.Goggles.Skype", "Expert.Goggles.Skype\Expert.Goggles.Skype.csproj", "{EEA71C8C-11BC-45D2-A4C0-B4CEDC4942EF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Expert.Goggles.Demo", "Expert.Goggles.Demo\Expert.Goggles.Demo.csproj", "{0B719343-8135-4BD0-B66B-428BE8C591EE}"
 EndProject
@@ -29,18 +27,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A4F8A50F-8080-4B3C-BB57-A2566D664297}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A4F8A50F-8080-4B3C-BB57-A2566D664297}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A4F8A50F-8080-4B3C-BB57-A2566D664297}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{A4F8A50F-8080-4B3C-BB57-A2566D664297}.Debug|x64.Build.0 = Debug|Any CPU
-		{A4F8A50F-8080-4B3C-BB57-A2566D664297}.Debug|x86.ActiveCfg = Debug|x86
-		{A4F8A50F-8080-4B3C-BB57-A2566D664297}.Debug|x86.Build.0 = Debug|x86
-		{A4F8A50F-8080-4B3C-BB57-A2566D664297}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A4F8A50F-8080-4B3C-BB57-A2566D664297}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A4F8A50F-8080-4B3C-BB57-A2566D664297}.Release|x64.ActiveCfg = Release|Any CPU
-		{A4F8A50F-8080-4B3C-BB57-A2566D664297}.Release|x64.Build.0 = Release|Any CPU
-		{A4F8A50F-8080-4B3C-BB57-A2566D664297}.Release|x86.ActiveCfg = Release|x86
-		{A4F8A50F-8080-4B3C-BB57-A2566D664297}.Release|x86.Build.0 = Release|x86
 		{9CF1F85F-149E-454D-AD1A-D9E2054DE67E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9CF1F85F-149E-454D-AD1A-D9E2054DE67E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CF1F85F-149E-454D-AD1A-D9E2054DE67E}.Debug|x64.ActiveCfg = Debug|Any CPU
