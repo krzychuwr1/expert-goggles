@@ -76,6 +76,7 @@
     <Content Include="zlib.dll" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Expert.Goggles.Core.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

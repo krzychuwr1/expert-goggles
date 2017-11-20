@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>Krzysztof Wrona, Michał Dzióbek</authors>
+    <owners>Krzysztof Wrona, Michał Dzióbek</owners>
+    <licenseUrl>https://github.com/krzychuwr1/expert-goggles/blob/dev/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/krzychuwr1/expert-goggles</projectUrl>
+    <iconUrl>https://image.ibb.co/eCGP8R/goggles.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Expert.Goggles Firefox Reader</description>
+    <releaseNotes>First release.</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags></tags>
+    <dependencies>
+      <dependency id="Expert.Goggles.Core" version="1.0.0" />
+    </dependencies>
+  </metadata>
+</package>

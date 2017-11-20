@@ -53,6 +53,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Expert.Goggles.Firefox.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

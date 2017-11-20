@@ -56,6 +56,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Expert.Goggles.Chrome.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

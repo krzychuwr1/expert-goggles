@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Expert.Goggles.Skype", "Exp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Expert.Goggles.Demo", "Expert.Goggles.Demo\Expert.Goggles.Demo.csproj", "{0B719343-8135-4BD0-B66B-428BE8C591EE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Expert.Goggles", "Expert.Goggles\Expert.Goggles.csproj", "{B8EBB224-F6CA-4668-8E82-42931039C72E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,6 +113,18 @@ Global
 		{0B719343-8135-4BD0-B66B-428BE8C591EE}.Release|x64.Build.0 = Release|Any CPU
 		{0B719343-8135-4BD0-B66B-428BE8C591EE}.Release|x86.ActiveCfg = Release|Any CPU
 		{0B719343-8135-4BD0-B66B-428BE8C591EE}.Release|x86.Build.0 = Release|Any CPU
+		{B8EBB224-F6CA-4668-8E82-42931039C72E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8EBB224-F6CA-4668-8E82-42931039C72E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8EBB224-F6CA-4668-8E82-42931039C72E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B8EBB224-F6CA-4668-8E82-42931039C72E}.Debug|x64.Build.0 = Debug|Any CPU
+		{B8EBB224-F6CA-4668-8E82-42931039C72E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B8EBB224-F6CA-4668-8E82-42931039C72E}.Debug|x86.Build.0 = Debug|Any CPU
+		{B8EBB224-F6CA-4668-8E82-42931039C72E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8EBB224-F6CA-4668-8E82-42931039C72E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8EBB224-F6CA-4668-8E82-42931039C72E}.Release|x64.ActiveCfg = Release|Any CPU
+		{B8EBB224-F6CA-4668-8E82-42931039C72E}.Release|x64.Build.0 = Release|Any CPU
+		{B8EBB224-F6CA-4668-8E82-42931039C72E}.Release|x86.ActiveCfg = Release|Any CPU
+		{B8EBB224-F6CA-4668-8E82-42931039C72E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
