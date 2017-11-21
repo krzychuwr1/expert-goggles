@@ -50,7 +50,7 @@
   <ItemGroup>
     <Compile Include="Exceptions\NoRegistryKeyException.cs" />
     <Compile Include="FileLogEntry.cs" />
-    <Compile Include="FileActionEntry.cs" />
+    <Compile Include="GoogleDriveFileActionEntry.cs" />
     <Compile Include="GoogleDriveMetadata.cs" />
     <Compile Include="GoogleDriveReader.cs" />
     <Compile Include="LogReader.cs" />

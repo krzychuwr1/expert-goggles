@@ -8,9 +8,9 @@ using Expert.Goggles.Core.Interfaces.Readers.Cloud;
 
 namespace Expert.Goggles.GoogleDrive
 {
-    public interface IGoogleDriveReader : IMetadataReader<GoogleDriveMetadata>, ICloudEntriesReader<FileActionEntry>
+    public interface IGoogleDriveReader : IMetadataReader<GoogleDriveMetadata>, ICloudEntriesReader<GoogleDriveFileActionEntry>
     {
-        IEnumerable<FileActionEntry> GetEntries(Action? actionType = null, Direction? direction = null);
+        IEnumerable<GoogleDriveFileActionEntry> GetEntries(Action? actionType = null, Direction? direction = null);
     }
 
     public class GoogleDriveReader : IGoogleDriveReader
@@ -28,12 +28,12 @@ namespace Expert.Goggles.GoogleDrive
 
 	    private string FindDbPath() => _disk.GetLocalFilePath($@"Users/{_userName}/AppData/Local/Google/Drive/user_default/sync_config.db");
 
-	    public IEnumerable<FileActionEntry> GetEntries()
+	    public IEnumerable<GoogleDriveFileActionEntry> GetEntries()
         {
             return GetEntries(null, null);
         }
 
-		public IEnumerable<FileActionEntry> GetEntries(Action? actionType = null, Direction? direction = null)
+		public IEnumerable<GoogleDriveFileActionEntry> GetEntries(Action? actionType = null, Direction? direction = null)
         {
             var stream = _disk.GetFile(FindLogFile());
 
@@ -99,20 +99,5 @@ namespace Expert.Goggles.GoogleDrive
                 UserEmail = GetUserEmail()
             };
         }
-
-	    //public void Init()
-	    //{
-	    //    var drivePath = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Google\Drive", "Path", null) as string;
-
-	    //    AppVersion = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Google\Drive", "FileManagerRestartedVersion", null) as string;
-
-	    //    if (drivePath is null)
-	    //    {
-	    //        throw new NoRegistryKeyException("Google drive path not found");
-	    //    }
-
-	    //    GetSyncConfigData(drivePath);
-	    //    GetSnapshotData(drivePath);
-	    //}
 	}
 }
