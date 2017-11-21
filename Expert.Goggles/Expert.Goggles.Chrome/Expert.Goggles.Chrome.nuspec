@@ -15,7 +15,7 @@
     <copyright>Copyright 2017</copyright>
     <tags></tags>
     <dependencies>
-      <dependency id="Expert.Goggles.Core" version="1.0.1" />
+      <dependency id="Expert.Goggles.Core" version="1.0.2" />
 </dependencies>
   </metadata>
 </package>
