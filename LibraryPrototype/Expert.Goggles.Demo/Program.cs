@@ -76,7 +76,6 @@ namespace Expert.Goggles.Demo
 					case AppNames.Chrome: GoogleChromeTest(disk, userName); break;
 					case AppNames.Firefox: FirefoxTest(disk, userName); break;
 					case AppNames.GoogleDrive: GoogleDriveTest(disk, userName); break;
-
 				}
 			}
 			catch (ArgumentException e)
@@ -98,7 +97,6 @@ namespace Expert.Goggles.Demo
 			var skypeReader = new Skype.SkypeReader(disk, userName);
 			var metadata = skypeReader.GetMetadata();
 			var messageEntries = skypeReader.GetMessagesEntries(metadata.Users.First()).ToList();
-
 		}
 
 		private static void FirefoxTest(IDisk disk, string userName)

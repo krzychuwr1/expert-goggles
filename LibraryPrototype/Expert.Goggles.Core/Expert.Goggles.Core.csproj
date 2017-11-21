@@ -54,11 +54,16 @@
     <Compile Include="Disk\DiskProvider.cs" />
     <Compile Include="Exceptions\FileNotFoundException.cs" />
     <Compile Include="Interfaces\Disk\IDiskProvider.cs" />
+    <Compile Include="Model\IBookmarkEntry.cs" />
     <Compile Include="Interfaces\Readers\Browsers\IBookmarksReader.cs" />
     <Compile Include="Interfaces\Readers\Browsers\ICookiesReader.cs" />
     <Compile Include="Interfaces\Readers\Browsers\IDownloadsReader.cs" />
     <Compile Include="Interfaces\Readers\Browsers\ISearchTermsReader.cs" />
     <Compile Include="Interfaces\Readers\Cloud\ICloudEntriesReader.cs" />
+    <Compile Include="Model\ICallEntry.cs" />
+    <Compile Include="Model\IContactEntry.cs" />
+    <Compile Include="Model\ICookieEntry.cs" />
+    <Compile Include="Model\IFileActionEntry.cs" />
     <Compile Include="Model\IMetadata.cs" />
     <Compile Include="Interfaces\Readers\IMetadataReader.cs" />
     <Compile Include="Disk\WindowsDiskImage.cs" />
@@ -70,6 +75,8 @@
     <Compile Include="Interfaces\Readers\Messengers\ITextMessegesReader.cs" />
     <Compile Include="Model\IDownloadEntry.cs" />
     <Compile Include="Model\IHistoryEntry.cs" />
+    <Compile Include="Model\ISearchTermEntry.cs" />
+    <Compile Include="Model\ITextMessageEntry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Disk\WindowsLocalDisk.cs" />
   </ItemGroup>

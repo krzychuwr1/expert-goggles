@@ -1,8 +1,9 @@
 ﻿using System;
+using Expert.Goggles.Core.Model;
 
 namespace Expert.Goggles.Skype.Model
 {
-    public class SkypeContactEntry
+    public class SkypeContactEntry : IContactEntry
     {
         public string SkypeName { get; set; }
         public string PstnNumber { get; set; }

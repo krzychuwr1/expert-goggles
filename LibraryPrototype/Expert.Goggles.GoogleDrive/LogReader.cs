@@ -8,7 +8,7 @@ namespace Expert.Goggles.GoogleDrive
 {
     public class LogReader
     {
-        public static IEnumerable<FileActionEntry> GetFilesHistoryFromLogs(Stream fileStream)
+        public static IEnumerable<GoogleDriveFileActionEntry> GetFilesHistoryFromLogs(Stream fileStream)
             => GetActionEntries(GetFileExtensionEntries(GenereteLogs(fileStream)));
 
         private static IEnumerable<FileLogEntry> GenereteLogs(Stream fileStream)
@@ -43,7 +43,7 @@ namespace Expert.Goggles.GoogleDrive
             }
         }
 
-        public static IEnumerable<FileActionEntry> GetActionEntries(IEnumerable<FileLogEntry> logs)
+        public static IEnumerable<GoogleDriveFileActionEntry> GetActionEntries(IEnumerable<FileLogEntry> logs)
         {
             foreach (var log in logs)
             {
@@ -59,7 +59,7 @@ namespace Expert.Goggles.GoogleDrive
                 
                 long.TryParse(filterFSChangeParameter(fschangeParameters, "size", '='), out var fileSize);
 
-                yield return new FileActionEntry()
+                yield return new GoogleDriveFileActionEntry()
                 {
                     FileName = fileName,
                     Direction = direction,

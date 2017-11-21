@@ -1,8 +1,10 @@
 ﻿using System;
+using Expert.Goggles.Core.Interfaces.Readers.Browsers;
+using Expert.Goggles.Core.Model;
 
 namespace Expert.Goggles.Firefox.Model
 {
-	public class FirefoxBookmarkEntry
+	public class FirefoxBookmarkEntry : IBookmarkEntry
 	{
 		public string Url { get; }
 		public string Title { get; }

@@ -2,6 +2,8 @@
 {
     public interface IDiskProvider
     {
-        IDisk OpenDisk(string path);
+	    IDisk OpenDisk();
+
+		IDisk OpenDisk(string path);
     }
 }

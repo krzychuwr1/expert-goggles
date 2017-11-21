@@ -1,8 +1,9 @@
 ﻿using System;
+using Expert.Goggles.Core.Model;
 
 namespace Expert.Goggles.Chrome.Model
 {
-	public class ChromeSearchTermEntry
+	public class ChromeSearchTermEntry : ISearchTermEntry
 	{
 		public string Term { get; }
 		public DateTime LastSearchTime { get; }

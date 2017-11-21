@@ -1,4 +1,5 @@
 ﻿using System;
+using Expert.Goggles.Core.Model;
 
 namespace Expert.Goggles.GoogleDrive
 {
@@ -19,7 +20,7 @@ namespace Expert.Goggles.GoogleDrive
         CHANGE_ACL
     }
 
-    public class FileActionEntry
+    public class GoogleDriveFileActionEntry : IFileActionEntry
     {
         public DateTime? Date { get; set; }
 

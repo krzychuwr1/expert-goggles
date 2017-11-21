@@ -93,9 +93,9 @@ namespace Expert.Goggles.Skype
                     yield return new SkypeTextMessageEntry
                     {
                         AuthorDisplayName = reader["from_dispname"] as string,
-                        AuthorSkypeName = reader["author"] as string,
+                        Author = reader["author"] as string,
                         Chatname = reader["chatname"] as string,
-                        ContentXml = reader["body_xml"] as string,
+                        Content = reader["body_xml"] as string,
                         Timestamp = reader["timestamp"] as DateTime?
                     };
                 }
