@@ -31,7 +31,7 @@ namespace Expert.Goggles.Core.Disk
 		public string GetLocalFilePath(string path) => AddLocalDiskPrefix(path);
 		public IEnumerable<string> GetDirectoryFiles(string path) => new DirectoryInfo(AddLocalDiskPrefix(path)).GetFiles().Select(f => f.Name);
 		public IEnumerable<string> GetDirectorySubdirectories(string path) => new DirectoryInfo(AddLocalDiskPrefix(path)).GetDirectories().Select(f => f.Name);
-
+		public bool CheckIfDirectoryExists(string path) => new DirectoryInfo(AddLocalDiskPrefix(path)).Exists;
 		private static string AddLocalDiskPrefix(string path) => path.StartsWith(@"C:\") ? path : $@"C:\{path}";
 	}
 }

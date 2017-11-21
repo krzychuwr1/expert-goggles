@@ -11,5 +11,6 @@ namespace Expert.Goggles.Core.Interfaces.Disk
         string GetLocalFilePath(string path);
 		IEnumerable<string> GetDirectoryFiles(string path);
 		IEnumerable<string> GetDirectorySubdirectories(string path);
+		bool CheckIfDirectoryExists(string path);
 	}
 }

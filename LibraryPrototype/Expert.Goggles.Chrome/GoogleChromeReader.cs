@@ -31,7 +31,6 @@ namespace Expert.Goggles.Chrome
 				string sql = "select v.visit_time, u.url, u.title from  visits v inner join urls u on u.id = v.url order by v.visit_time desc";
 				SQLiteCommand command = new SQLiteCommand(sql, conn);
 				SQLiteDataReader reader = command.ExecuteReader();
-				StringBuilder builder = new StringBuilder();
 				while (reader.Read())
 				{
 					var time = ((long)reader["visit_time"]).ConvertToDateTimeFromChromeTimeStamp();
@@ -49,7 +48,6 @@ namespace Expert.Goggles.Chrome
 				string sql = "select * from downloads";
 				SQLiteCommand command = new SQLiteCommand(sql, conn);
 				SQLiteDataReader reader = command.ExecuteReader();
-				StringBuilder builder = new StringBuilder();
 				while (reader.Read())
 				{
 					var startTime = ((long)reader["start_time"]).ConvertToDateTimeFromChromeTimeStamp();
@@ -76,7 +74,6 @@ namespace Expert.Goggles.Chrome
 				string sql = "select * from keyword_search_terms k inner join urls u on k.url_id = u.id order by u.last_visit_time desc";
 				SQLiteCommand command = new SQLiteCommand(sql, conn);
 				SQLiteDataReader reader = command.ExecuteReader();
-				StringBuilder builder = new StringBuilder();
 				while (reader.Read())
 				{
 					var lastSearchTime = ((long) reader["last_visit_time"]).ConvertToDateTimeFromChromeTimeStamp();

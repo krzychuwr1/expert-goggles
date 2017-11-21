@@ -105,8 +105,23 @@ namespace Expert.Goggles.Core.Disk
 		    using (FileSystem fileSystem = diskImage.OpenFileSystem())
 		    {
 			    var dir = fileSystem.OpenDirectory(path);
-			    return dir.Directories.Select(e => e.Name);
+			    return dir.EntryNames.Where(e => e.Type == FilesystemNameType.Directory).Select(e => e.GetName()).Where(name => name != "." && name != "..");
 		    }
 		}
+
+	    public bool CheckIfDirectoryExists(string path)
+	    {
+		    using (var fileSystem = diskImage.OpenFileSystem())
+		    {
+			    try
+			    {
+				    return fileSystem.OpenDirectory(path) != null;
+			    }
+			    catch (Exception)
+			    {
+				    return false;
+			    }
+		    }
+	    }
     }
 }

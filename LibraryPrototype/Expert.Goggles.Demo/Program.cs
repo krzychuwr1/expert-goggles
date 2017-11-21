@@ -7,6 +7,7 @@ using Expert.Goggles.Chrome;
 using Expert.Goggles.Core.Disk;
 using Expert.Goggles.Core.Interfaces.Disk;
 using Expert.Goggles.Core.Model;
+using Expert.Goggles.Detector;
 using Expert.Goggles.Firefox;
 using Expert.Goggles.GoogleDrive;
 using Action = Expert.Goggles.GoogleDrive.Action;
@@ -26,27 +27,57 @@ namespace Expert.Goggles.Demo
 				var disk = string.IsNullOrWhiteSpace(path)
 					? new DiskProvider().OpenDisk()
 					: new DiskProvider().OpenDisk(path);
-				var users = disk.GetAllUsers();
+				var detector = new Detector.Detector(disk);
+				var users = detector.GetWindowsUsers().ToList();
+
+				if (!users.Any())
+				{
+					Console.WriteLine("No users on this disk!");
+					Console.ReadKey();
+					return;
+				}
+
 				Console.WriteLine("Found usernames:");
 				foreach (var user in users)
 				{
 					Console.WriteLine(user);
 				}
 				string userName = null;
-				while (users.Any(u => u != userName))
+				while (users.All(u => u != userName))
 				{
 					Console.WriteLine("Provide one of found usernames: ");
 					userName = Console.ReadLine();
 				}
 
-				GoogleDriveTest(disk, userName);
+				var apps = detector.GetAppsForWindowsUser(userName).ToList();
+				Console.WriteLine("Found apps:");
+				foreach (var app in apps)
+				{
+					Console.WriteLine(app);
+				}
 
-				//            //GoogleChromeTest(disk, userName);
-				//            var r = new SkypeReader.SkypeReader(disk, userName);
-				//var test = r.GetMetadata();
-				//var ce = r.GetMessagesEntries(test.Users.First()).ToList();
-				//FirefoxTest(disk, userName);
+				if (!apps.Any())
+				{
+					Console.WriteLine("No apps for this user!");
+					Console.ReadKey();
+					return;
+				}
 
+				string appName = null;
+				while (apps.All(u => u != appName))
+				{
+					Console.WriteLine("Provide one of found app names: ");
+					appName = Console.ReadLine();
+				}
+
+				switch (appName)
+				{
+					case AppNames.Skype: SkypeTest(disk, userName); break;
+					case AppNames.Chrome: GoogleChromeTest(disk, userName); break;
+					case AppNames.Firefox: FirefoxTest(disk, userName); break;
+					case AppNames.GoogleDrive: GoogleDriveTest(disk, userName); break;
+
+				}
 			}
 			catch (ArgumentException e)
 			{
@@ -60,6 +91,14 @@ namespace Expert.Goggles.Demo
 			}
 
 			Console.ReadLine();
+		}
+
+		private static void SkypeTest(IDisk disk, string userName)
+		{
+			var skypeReader = new Skype.SkypeReader(disk, userName);
+			var metadata = skypeReader.GetMetadata();
+			var messageEntries = skypeReader.GetMessagesEntries(metadata.Users.First()).ToList();
+
 		}
 
 		private static void FirefoxTest(IDisk disk, string userName)
