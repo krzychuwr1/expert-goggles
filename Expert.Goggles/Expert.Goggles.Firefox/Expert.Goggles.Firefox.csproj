@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DiskExtensions\DiskExtension.cs" />
     <Compile Include="Model\FirefoxDownloadEntry.cs" />
     <Compile Include="FirefoxReader.cs" />
     <Compile Include="Model\FirefoxBookmarkEntry.cs" />

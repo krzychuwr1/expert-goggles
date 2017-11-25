@@ -34,6 +34,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ewf.net, Version=1.0.5955.16816, Culture=neutral, PublicKeyToken=c0e8495fa322da2d, processorArchitecture=x86">
+      <HintPath>..\packages\sleuthkit-sharp.1.0.7\lib\net461\ewf.net.dll</HintPath>
+    </Reference>
+    <Reference Include="sleuthkit-sharp, Version=1.0.7.0, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\packages\sleuthkit-sharp.1.0.7\lib\net461\sleuthkit-sharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite, Version=1.0.106.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
@@ -87,5 +93,7 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.106.0\build\net46\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.106.0\build\net46\System.Data.SQLite.Core.targets'))" />
+    <Error Condition="!Exists('..\packages\sleuthkit-sharp.1.0.7\build\sleuthkit-sharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\sleuthkit-sharp.1.0.7\build\sleuthkit-sharp.targets'))" />
   </Target>
+  <Import Project="..\packages\sleuthkit-sharp.1.0.7\build\sleuthkit-sharp.targets" Condition="Exists('..\packages\sleuthkit-sharp.1.0.7\build\sleuthkit-sharp.targets')" />
 </Project>

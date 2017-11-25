@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DiskExtensions\DiskExtension.cs" />
     <Compile Include="Model\SkypeCallEntry.cs" />
     <Compile Include="Model\SkypeContactEntry.cs" />
     <Compile Include="Model\SkypeTextMessageEntry.cs" />

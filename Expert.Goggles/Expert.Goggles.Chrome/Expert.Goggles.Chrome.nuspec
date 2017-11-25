@@ -11,12 +11,12 @@
     <iconUrl>https://image.ibb.co/eCGP8R/goggles.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Expert.Goggles Chrome Reader</description>
-    <releaseNotes>First release.</releaseNotes>
+    <releaseNotes>Fixed the issue with having to manually set unmanaged DLLs to copy to output directory.</releaseNotes>
     <copyright>Copyright 2017</copyright>
     <tags></tags>
     <dependencies>
-      <dependency id="Expert.Goggles.Core" version="1.0.2" />
-      <dependency id="Expert.Goggles.Detector" version="1.0.2" />
+      <dependency id="Expert.Goggles.Core" version="1.0.3" />
+      <dependency id="Expert.Goggles.Detector" version="1.0.3" />
 </dependencies>
   </metadata>
 </package>

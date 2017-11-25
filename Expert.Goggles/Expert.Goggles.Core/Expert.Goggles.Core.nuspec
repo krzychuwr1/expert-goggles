@@ -11,11 +11,11 @@
     <iconUrl>https://image.ibb.co/eCGP8R/goggles.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Core library of Expert.Goggles</description>
-    <releaseNotes>First release.</releaseNotes>
+    <releaseNotes>Fixed the issue with having to manually set unmanaged DLLs to copy to output directory.</releaseNotes>
     <copyright>Copyright 2017</copyright>
     <tags></tags>
     <dependencies>
-      <dependency id="sleuthkit-sharp" version="1.0.6" />
+      <dependency id="sleuthkit-sharp" version="1.0.7" />
 </dependencies>
   </metadata>
 </package>

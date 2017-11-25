@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Expert.Goggles.Chrome;
+using Expert.Goggles.Chrome.DiskExtensions;
 using Expert.Goggles.Core.Disk;
 using Expert.Goggles.Core.Interfaces.Disk;
 using Expert.Goggles.Core.Model;
 using Expert.Goggles.Detector;
-using Expert.Goggles.Firefox;
-using Expert.Goggles.GoogleDrive;
+using Expert.Goggles.Detector.DiskExtensions;
+using Expert.Goggles.Firefox.DiskExtensions;
+using Expert.Goggles.GoogleDrive.DiskExtensions;
+using Expert.Goggles.Skype.DiskExtensions;
 using Action = Expert.Goggles.GoogleDrive.Action;
 
 namespace Expert.Goggles.Demo
@@ -27,7 +27,7 @@ namespace Expert.Goggles.Demo
 				var disk = string.IsNullOrWhiteSpace(path)
 					? new DiskProvider().OpenDisk()
 					: new DiskProvider().OpenDisk(path);
-				var detector = new Detector.Detector(disk);
+				var detector = disk.GetDetector();
 				var users = detector.GetWindowsUsers().ToList();
 
 				if (!users.Any())
@@ -94,14 +94,14 @@ namespace Expert.Goggles.Demo
 
 		private static void SkypeTest(IDisk disk, string userName)
 		{
-			var skypeReader = new Skype.SkypeReader(disk, userName);
+			var skypeReader = disk.GetSkypeReader(userName);
 			var metadata = skypeReader.GetMetadata();
 			var messageEntries = skypeReader.GetMessagesEntries(metadata.Users.First()).ToList();
 		}
 
 		private static void FirefoxTest(IDisk disk, string userName)
 		{
-			var firefoxReader = new FirefoxReader(disk, userName);
+			var firefoxReader = disk.GetFirefoxReader(userName);
 
 			var historyEntries = firefoxReader.GetHistoryEntries();
 
@@ -137,7 +137,7 @@ namespace Expert.Goggles.Demo
 
 		private static void GoogleChromeTest(IDisk disk, string userName)
 		{
-			var googleChromeReader = new GoogleChromeReader(disk, userName);
+			var googleChromeReader = disk.GetGoogleChromeReader(userName);
 
 			var historyEntries = googleChromeReader.GetHistoryEntries();
 
@@ -163,7 +163,7 @@ namespace Expert.Goggles.Demo
 
 		private static void GoogleDriveTest(IDisk disk, string userName)
 		{
-			var googleDriveReader = new GoogleDriveReader(disk, userName);
+			var googleDriveReader = disk.GetGoogleDriverReader(userName);
 			var fileActions = googleDriveReader.GetEntries(Action.CREATE);
 			//var metadata = googleDriveReader.GetMetadata();
 			Console.WriteLine("FILENAME".PadRight(SPad) + "ACTION".PadRight(10) + "DIRECTION".PadRight(10) +

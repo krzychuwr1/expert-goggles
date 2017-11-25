@@ -41,6 +41,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DiskExtensions\DiskExtension.cs" />
     <Compile Include="Model\ChromeSearchTermEntry.cs" />
     <Compile Include="Extensions\ChromeTimeStampExtension.cs" />
     <Compile Include="Model\ChromeDownloadEntry.cs" />

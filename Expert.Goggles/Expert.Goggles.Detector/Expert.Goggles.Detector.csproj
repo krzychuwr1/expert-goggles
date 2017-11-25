@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="AppNames.cs" />
     <Compile Include="Detector.cs" />
+    <Compile Include="DiskExtensions\DiskExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -59,6 +60,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Expert.Goggles.Detector.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

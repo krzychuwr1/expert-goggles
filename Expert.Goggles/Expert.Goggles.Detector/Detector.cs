@@ -4,7 +4,13 @@ using Expert.Goggles.Core.Interfaces.Disk;
 
 namespace Expert.Goggles.Detector
 {
-    public class Detector
+	public interface IDetector
+	{
+		IEnumerable<string> GetWindowsUsers();
+		IEnumerable<string> GetAppsForWindowsUser(string userName);
+	}
+
+    public class Detector : IDetector
     {
 	    private readonly IDisk _disk;
 

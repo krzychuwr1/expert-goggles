@@ -10,16 +10,19 @@
     <projectUrl>https://github.com/krzychuwr1/expert-goggles</projectUrl>
     <iconUrl>https://image.ibb.co/eCGP8R/goggles.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Expert Goggles allows you to find traces of activity in applications like Chrome, Firefox, Google Drive and Skype</description>
-    <releaseNotes>First release.</releaseNotes>
+    <description>Expert Goggles allows you to find traces of activity in applications like Chrome, Firefox, Google Drive and Skype
+    
+    Icon by Delapouite under CC BY 3.0 license
+    </description>
+    <releaseNotes>Fixed the issue with having to manually set unmanaged DLLs to copy to output directory.</releaseNotes>
     <copyright>Copyright 2017</copyright>
     <tags></tags>
     <dependencies>
-      <dependency id="Expert.Goggles.Chrome" version="1.0.2" />
-      <dependency id="Expert.Goggles.Firefox" version="1.0.2" />
-      <dependency id="Expert.Goggles.GoogleDrive" version="1.0.2" />
-      <dependency id="Expert.Goggles.Skype" version="1.0.2" />
-      <dependency id="Expert.Goggles.Detector" version="1.0.2" />
+      <dependency id="Expert.Goggles.Chrome" version="1.0.3" />
+      <dependency id="Expert.Goggles.Firefox" version="1.0.3" />
+      <dependency id="Expert.Goggles.GoogleDrive" version="1.0.3" />
+      <dependency id="Expert.Goggles.Skype" version="1.0.3" />
+      <dependency id="Expert.Goggles.Detector" version="1.0.3" />
 </dependencies>
   </metadata>
 </package>

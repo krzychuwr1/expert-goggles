@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DiskExtensions\DiskExtension.cs" />
     <Compile Include="Exceptions\NoRegistryKeyException.cs" />
     <Compile Include="FileLogEntry.cs" />
     <Compile Include="GoogleDriveFileActionEntry.cs" />

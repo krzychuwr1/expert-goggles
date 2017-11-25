@@ -13,5 +13,13 @@
     <releaseNotes>First release.</releaseNotes>
     <copyright>Copyright 2017</copyright>
     <tags></tags>
+      <references>
+    <reference file="ewf.net.dll" />
+    <reference file="sleuthkit-sharp.dll" />
+    </references>
   </metadata>
+  <files>
+    <file src="lib\net461\*.*" target="lib\net461" />
+    <file src="build\sleuthkit-sharp.targets" target="build" />
+  </files>
 </package>
