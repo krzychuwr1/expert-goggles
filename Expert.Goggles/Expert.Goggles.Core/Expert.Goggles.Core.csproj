@@ -60,7 +60,10 @@
     <Compile Include="Disk\DiskProvider.cs" />
     <Compile Include="Exceptions\FileNotFoundException.cs" />
     <Compile Include="Interfaces\Disk\IDiskProvider.cs" />
+    <Compile Include="Interfaces\Readers\Browsers\IUserBookmarksReader.cs" />
     <Compile Include="Interfaces\Readers\Browsers\IUserBrowsingHistoryReader.cs" />
+    <Compile Include="Interfaces\Readers\Browsers\IUserCookiesReader.cs" />
+    <Compile Include="Interfaces\Readers\Browsers\IUserDownloadsReader.cs" />
     <Compile Include="Model\IBookmarkEntry.cs" />
     <Compile Include="Interfaces\Readers\Browsers\IBookmarksReader.cs" />
     <Compile Include="Interfaces\Readers\Browsers\ICookiesReader.cs" />
@@ -91,7 +94,6 @@
     <None Include="Expert.Goggles.Core.nuspec">
       <SubType>Designer</SubType>
     </None>
-    <Fakes Include="Fakes\ewf.net.fakes" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
