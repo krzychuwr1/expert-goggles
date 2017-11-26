@@ -133,6 +133,14 @@ namespace Expert.Goggles.Demo
 			{
 				Console.WriteLine($"{download.Url.PadRight(100)} {download.Path.PadRight(80)} {download.StartTime.ToString().PadRight(25)}");
 			}
+
+			var users = firefoxReader.GetMetadata().Users;
+
+			Console.WriteLine("Firefox users: ");
+			foreach (var user in users)
+			{
+				Console.WriteLine(user);
+			}
 		}
 
 		private static void GoogleChromeTest(IDisk disk, string userName)

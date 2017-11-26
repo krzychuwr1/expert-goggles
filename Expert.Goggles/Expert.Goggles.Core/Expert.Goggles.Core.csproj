@@ -60,6 +60,7 @@
     <Compile Include="Disk\DiskProvider.cs" />
     <Compile Include="Exceptions\FileNotFoundException.cs" />
     <Compile Include="Interfaces\Disk\IDiskProvider.cs" />
+    <Compile Include="Interfaces\Readers\Browsers\IUserBrowsingHistoryReader.cs" />
     <Compile Include="Model\IBookmarkEntry.cs" />
     <Compile Include="Interfaces\Readers\Browsers\IBookmarksReader.cs" />
     <Compile Include="Interfaces\Readers\Browsers\ICookiesReader.cs" />

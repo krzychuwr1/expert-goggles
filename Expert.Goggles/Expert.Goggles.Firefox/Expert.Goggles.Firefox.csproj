@@ -51,6 +51,7 @@
     <Compile Include="Model\FirefoxBookmarkEntry.cs" />
     <Compile Include="Model\FirefoxCookieEntry.cs" />
     <Compile Include="Model\FirefoxHistoryEntry.cs" />
+    <Compile Include="Model\FirefoxMetadata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
