@@ -154,6 +154,7 @@ namespace Example
                     
                     printedEntries++;
                 }
+                Console.WriteLine("Press q to stop");
                 if (printedEntries == 0 || Console.ReadKey().KeyChar == 'q')
                 {
                     break;
