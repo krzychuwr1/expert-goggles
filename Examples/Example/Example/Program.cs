@@ -123,34 +123,47 @@ namespace Example
 			var choice = Console.ReadLine()?.Trim();
 			switch (choice)
 			{
-				case "ca":
-					var calls = skypeReader.GetCallEntries(skypeUsername);
-					Console.WriteLine($"{"HOST".PadRight(40)} {"TOPIC".PadRight(40)} {"START TIME".PadRight(25)} {"ACTIVE MEMBERS".PadRight(25)}");
-					foreach (var call in calls)
-					{
-						Console.WriteLine($"{call.HostIdentity.PadRight(40)} {call.Topic.PadRight(40)} {call.BeginTimestamp?.ToString().PadRight(25)} {call.ActiveMembers.ToString().PadRight(25)}");
-					}
-					break;
-				case "co":
+                case "ca":
+                    var calls = skypeReader.GetCallEntries(skypeUsername);
+                    PrintEntries(calls, $"{"HOST".PadRight(40)} {"TOPIC".PadRight(40)} {"START TIME".PadRight(25)} {"ACTIVE MEMBERS".PadRight(25)}",
+                        call => Console.WriteLine($"{call.HostIdentity.PadRight(40)} {call.Topic.PadRight(40)} {call.BeginTimestamp?.ToString().PadRight(25)} {call.ActiveMembers.ToString().PadRight(25)}"));
+                    break;
+                case "co":
 					var contacts = skypeReader.GetContactEntries(skypeUsername);
-					Console.WriteLine($"{"FULL NAME".PadRight(30)} {"CITY".PadRight(30)} {"SKYPE NAME".PadRight(25)} {"PHONE".PadRight(25)}");
-					foreach (var contact in contacts)
-					{
-						Console.WriteLine($"{contact.FullName.PadRight(30)} {contact.City.PadRight(30)} {contact.SkypeName.PadRight(25)} {contact.PhoneNumber.PadRight(25)}");
-					}
+                    PrintEntries(contacts, $"{"FULL NAME".PadRight(30)} {"CITY".PadRight(30)} {"SKYPE NAME".PadRight(25)} {"PHONE".PadRight(25)}",
+                        contact => Console.WriteLine($"{contact.FullName.PadRight(30)} {contact.City.PadRight(30)} {contact.SkypeName.PadRight(25)} {contact.PhoneNumber.PadRight(25)}"));
 					break;
 				case "m":
 					var messages = skypeReader.GetMessagesEntries(skypeUsername);
-					Console.WriteLine($"{"AUTHOR".PadRight(30)} {"AUTHOR DISPLAY".PadRight(30)} {"CHATNAME".PadRight(30)} {"TIME".PadRight(30)} {"MESSAGE".PadRight(30)}");
-					foreach (var message in messages)
-					{
-						Console.WriteLine($"{message.Author.PadRight(30)} {message.AuthorDisplayName.PadRight(30)} {message.Chatname.PadRight(30)} {message.Timestamp?.ToString().PadRight(30)} {message.Content.PadRight(30)}");
-					}
+                    PrintEntries(messages, $"{"AUTHOR".PadRight(30)} {"AUTHOR DISPLAY".PadRight(30)} {"CHATNAME".PadRight(30)} {"TIME".PadRight(30)} {"MESSAGE".PadRight(30)}",
+                        message => Console.WriteLine($"{message.Author.PadRight(30)} {message.AuthorDisplayName.PadRight(30)} {message.Chatname.PadRight(30)} {message.Timestamp?.ToString().PadRight(30)} {message.Content.PadRight(30)}"));
 					break;
 			}
 		}
 
-		private static void FirefoxTest(IDisk disk, string userName)
+        private static void PrintEntries<T>(IEnumerable<T> calls, string header, Action<T> format)
+        {
+            var batchNumber = 0;
+            while (true)
+            {
+                int printedEntries = 0;
+                Console.WriteLine(header);
+                foreach (var call in calls.Skip(batchNumber * 20).Take(20))
+                {
+                    format(call);
+                    
+                    printedEntries++;
+                }
+                if (printedEntries == 0 || Console.ReadKey().KeyChar == 'q')
+                {
+                    break;
+                }
+                batchNumber++;
+            }
+            batchNumber = 0;
+        }
+
+        private static void FirefoxTest(IDisk disk, string userName)
 		{
 			var firefoxReader = disk.GetFirefoxReader(userName);
 
@@ -165,33 +178,18 @@ namespace Example
 					break;
 				case "b":
 					var bookmarksEntries = firefoxReader.GetBookmarkEntries();
-
-					Console.WriteLine($"{"URL".PadRight(70)} {"TITLE".PadRight(40)} {"LAST MODIFIED".PadRight(25)} {"LAST VISITED".PadRight(25)} {"VISITS COUNT".PadRight(15)}");
-
-					foreach (var bookmarkEntry in bookmarksEntries)
-					{
-						Console.WriteLine($"{bookmarkEntry.Url.PadRight(70)} {bookmarkEntry.Title.PadRight(40)} {bookmarkEntry.LastModified.ToString().PadRight(25)} {bookmarkEntry.LastVisited.ToString().PadRight(25)} {bookmarkEntry.VisitCount.ToString().PadRight(15)} ");
-					}
+                    PrintEntries(bookmarksEntries, $"{"URL".PadRight(70)} {"TITLE".PadRight(40)} {"LAST MODIFIED".PadRight(25)} {"LAST VISITED".PadRight(25)} {"VISITS COUNT".PadRight(15)}",
+                        bookmarkEntry => Console.WriteLine($"{bookmarkEntry.Url.PadRight(70)} {bookmarkEntry.Title.PadRight(40)} {bookmarkEntry.LastModified.ToString().PadRight(25)} {bookmarkEntry.LastVisited.ToString().PadRight(25)} {bookmarkEntry.VisitCount.ToString().PadRight(15)} "));
 					break;
 				case "c":
 					var cookies = firefoxReader.GetCookies();
-
-					Console.WriteLine($"{"DOMAIN".PadRight(30)} {"NAME".PadRight(30)}");
-
-					foreach (var cookie in cookies)
-					{
-						Console.WriteLine($"{cookie.Url.PadRight(30)} {cookie.Name.PadRight(30)}");
-					}
+                    PrintEntries(cookies, $"{"DOMAIN".PadRight(30)} {"NAME".PadRight(30)}",
+                        cookie => Console.WriteLine($"{cookie.Url.PadRight(30)} {cookie.Name.PadRight(30)}"));
 					break;
 				case "d":
 					var downloads = firefoxReader.GetDownloadEntries();
-
-					Console.WriteLine($"{"URL".PadRight(100)} {"PATH".PadRight(80)} {"START TIME".PadRight(25)}");
-
-					foreach (var download in downloads)
-					{
-						Console.WriteLine($"{download.Url.PadRight(100)} {download.Path.PadRight(80)} {download.StartTime.ToString().PadRight(25)}");
-					}
+                    PrintEntries(downloads, $"{"URL".PadRight(100)} {"PATH".PadRight(80)} {"START TIME".PadRight(25)}",
+                        download => Console.WriteLine($"{download.Url.PadRight(100)} {download.Path.PadRight(80)} {download.StartTime.ToString().PadRight(25)}"));
 					break;
 			}
 		}
@@ -207,27 +205,17 @@ namespace Example
 			{
 				case "h":
 					var historyEntries = googleChromeReader.GetHistoryEntries();
-
 					PrintHistoryEntries(historyEntries);
 					break;
 				case "s":
 					var searchEntries = googleChromeReader.GetSearchTermEntries();
-
-					Console.WriteLine($"{"TERM".PadRight(80)} {"LAST SEARCH TIME".PadRight(25)} {"COUNT".PadRight(10)}");
-					foreach (var entry in searchEntries)
-					{
-						Console.WriteLine($"{entry.Term.PadRight(80)} {entry.LastSearchTime.ToString().PadRight(25)} {entry.Count.ToString().PadRight(10)}");
-					}
+                    PrintEntries(searchEntries, $"{"TERM".PadRight(80)} {"LAST SEARCH TIME".PadRight(25)} {"COUNT".PadRight(10)}",
+                        entry => Console.WriteLine($"{entry.Term.PadRight(80)} {entry.LastSearchTime.ToString().PadRight(25)} {entry.Count.ToString().PadRight(10)}"));
 					break;
 				case "d":
 					var downloadEntries = googleChromeReader.GetDownloadEntries();
-
-					Console.WriteLine($"{"URL".PadRight(70)} {"PATH".PadRight(70)} {"DOWNLOADED SIZE".PadRight(SPad)} {"TOTAL SIZE".PadRight(SPad)} {"STATE".PadRight(SPad)} {"START TIME".PadRight(25)} {"END TIME".PadRight(25)}");
-
-					foreach (var entry in downloadEntries)
-					{
-						Console.WriteLine($"{entry.Url.PadRight(70)} {entry.Path.PadRight(70)} {entry.DownloadedSizeKb.ToString().PadRight(SPad)} {entry.TotalSizeKb.ToString().PadRight(SPad)} {entry.State.ToString().PadRight(SPad)} {entry.StartTime.ToString().PadRight(25)} {entry.EndTime.ToString().PadRight(25)}");
-					}
+                    PrintEntries(downloadEntries, $"{"URL".PadRight(70)} {"PATH".PadRight(70)} {"DOWNLOADED SIZE".PadRight(SPad)} {"TOTAL SIZE".PadRight(SPad)} {"STATE".PadRight(SPad)} {"START TIME".PadRight(25)} {"END TIME".PadRight(25)}",
+                        entry => Console.WriteLine($"{entry.Url.PadRight(70)} {entry.Path.PadRight(70)} {entry.DownloadedSizeKb.ToString().PadRight(SPad)} {entry.TotalSizeKb.ToString().PadRight(SPad)} {entry.State.ToString().PadRight(SPad)} {entry.StartTime.ToString().PadRight(25)} {entry.EndTime.ToString().PadRight(25)}"));
 					break;
 			}
 		}
@@ -252,28 +240,20 @@ namespace Example
 			}
 
 			var fileActions = googleDriveReader.GetEntries(Action.CREATE);
-			//var metadata = googleDriveReader.GetMetadata();
-			Console.WriteLine("FILENAME".PadRight(SPad) + "ACTION".PadRight(10) + "DIRECTION".PadRight(10) +
-							  "TIME".PadRight(25) + "PATH");
-
-			foreach (var log in fileActions)
-			{
-				Console.WriteLine(log.FileName.PadRight(SPad)
-								  + log.Action.ToString().PadRight(10)
-								  + log.Direction.ToString().PadRight(10)
-								  + log.Date.ToString().PadRight(25)
-								  + log.Path);
-			}
+            //var metadata = googleDriveReader.GetMetadata();
+            PrintEntries(fileActions, "FILENAME".PadRight(SPad) + "ACTION".PadRight(10) + "DIRECTION".PadRight(10) +
+                              "TIME".PadRight(25) + "PATH",
+                              log => Console.WriteLine(log.FileName.PadRight(SPad)
+                                  + log.Action.ToString().PadRight(10)
+                                  + log.Direction.ToString().PadRight(10)
+                                  + log.Date.ToString().PadRight(25)
+                                  + log.Path));
 		}
 
 		private static void PrintHistoryEntries(IEnumerable<IHistoryEntry> entries)
 		{
-			Console.WriteLine($"{"TIME".PadRight(25)} {"URL".PadRight(50)} {"TITLE".PadRight(50)}");
-
-			foreach (var entry in entries)
-			{
-				Console.WriteLine($"{entry.EntryTime.ToString().PadRight(25)} {entry.Url.PadRight(50)} {entry.Title.PadRight(50)}");
-			}
+            PrintEntries(entries, $"{"TIME".PadRight(25)} {"URL".PadRight(50)} {"TITLE".PadRight(50)}",
+                entry => Console.WriteLine($"{entry.EntryTime.ToString().PadRight(25)} {entry.Url.PadRight(50)} {entry.Title.PadRight(50)}"));
 		}
 	}
 }
