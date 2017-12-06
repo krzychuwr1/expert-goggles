@@ -124,13 +124,28 @@ namespace Example
 			switch (choice)
 			{
 				case "ca":
-					skypeReader.GetCallEntries(skypeUsername);
+					var calls = skypeReader.GetCallEntries(skypeUsername);
+					Console.WriteLine($"{"HOST".PadRight(40)} {"TOPIC".PadRight(40)} {"START TIME".PadRight(25)} {"ACTIVE MEMBERS".PadRight(25)}");
+					foreach (var call in calls)
+					{
+						Console.WriteLine($"{call.HostIdentity.PadRight(40)} {call.Topic.PadRight(40)} {call.BeginTimestamp?.ToString().PadRight(25)} {call.ActiveMembers.ToString().PadRight(25)}");
+					}
 					break;
 				case "co":
-					skypeReader.GetContactEntries(skypeUsername);
+					var contacts = skypeReader.GetContactEntries(skypeUsername);
+					Console.WriteLine($"{"FULL NAME".PadRight(30)} {"CITY".PadRight(30)} {"SKYPE NAME".PadRight(25)} {"PHONE".PadRight(25)}");
+					foreach (var contact in contacts)
+					{
+						Console.WriteLine($"{contact.FullName.PadRight(30)} {contact.City.PadRight(30)} {contact.SkypeName.PadRight(25)} {contact.PhoneNumber.PadRight(25)}");
+					}
 					break;
 				case "m":
-					skypeReader.GetMessagesEntries(skypeUsername);
+					var messages = skypeReader.GetMessagesEntries(skypeUsername);
+					Console.WriteLine($"{"AUTHOR".PadRight(30)} {"AUTHOR DISPLAY".PadRight(30)} {"CHATNAME".PadRight(30)} {"TIME".PadRight(30)} {"MESSAGE".PadRight(30)}");
+					foreach (var message in messages)
+					{
+						Console.WriteLine($"{message.Author.PadRight(30)} {message.AuthorDisplayName.PadRight(30)} {message.Chatname.PadRight(30)} {message.Timestamp?.ToString().PadRight(30)} {message.Content.PadRight(30)}");
+					}
 					break;
 			}
 		}
